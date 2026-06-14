@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clé de détermination botanique — v0.35</title>
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Clé de détermination botanique — v0.37</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -17,10 +17,40 @@
 }
 html{background:var(--bg)}
 body{font-family:'Crimson Pro',Georgia,serif;color:var(--text);min-height:100vh;background:var(--bg)}
-.shell{max-width:680px;margin:0 auto;padding:32px 20px 60px}
-.hdr{text-align:center;margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid var(--border-lt)}
-.hdr h1{font-weight:300;font-size:26px;letter-spacing:.04em;margin-bottom:6px}
-.hdr p{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
+.shell{max-width:680px;margin:0 auto;padding:0 20px 60px;margin-top:52px;overflow:hidden}
+.hdr{
+  background:#1A1A18;
+  text-align:center;
+  padding:80px 32px 72px;
+  margin-bottom:36px;
+  position:relative;
+  left:50%;
+  right:50%;
+  margin-left:-50vw;
+  margin-right:-50vw;
+  width:100vw;
+}
+.hdr h1{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-weight:400;
+  font-size:clamp(30px,4vw,52px);
+  letter-spacing:.04em;
+  line-height:1;
+  color:#fff;
+  margin-bottom:18px;
+  white-space:nowrap;
+  text-shadow:
+    0 2px 16px rgba(0,0,0,.75),
+    0 1px  6px rgba(0,0,0,.55);
+}
+.hdr p{
+  font-family:'DM Mono',monospace;
+  font-size:11px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:#8CC76A;
+  text-shadow:0 1px 8px rgba(0,0,0,.6);
+}
 .prog{display:flex;gap:3px;margin-bottom:20px;height:2px}
 .dot{flex:1;border-radius:2px;background:var(--border)}
 .dot.done{background:var(--green)}.dot.active{background:var(--green);opacity:.4}
@@ -170,6 +200,18 @@ body{font-family:'Crimson Pro',Georgia,serif;color:var(--text);min-height:100vh;
 </style>
 </head>
 <body>
+<nav class="pvi-nav">
+  <a class="nav-logo" href="index.html"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAEw0lEQVR42u2WS2xd1RWGv7X3Oec+YkwwSWqLgCUewTJEqIJB1QIhSFUjECRUui4dZAATA+qDAY8RMlbFoKWDlmc8gUEGhWupvARCQijhVXUA6oBQaEJAgUTQuElTY/s+ztn77+D6GmMSEQISQrr/bG+t8+9/r7XOvxf00EMPPfTwPYXABPad8gps1yaSlfu7NpF8E3GnxFsHv3z94ejw4KENQ2tWEp+KmOXrQxuG1nw4Ojx4orMNoF7Dj00Tdg0Pl88vF+MY2wtjg6JCYhwws2f/95n96eKDB48KzEAnK8ZAe9avHzj9NN0u6fpCDJszn4i9iJ3vN5OpzQcONLsaTOAM4r6LztpcRg9VnRttRdFW524pxmnOcTjL35s9lyt/OP3pfxZvopPJzD9qg2v6P+DVde105LMYyREIMjNKzliI8Z9N7FcXvHNol8B1xFwytK1a4mWX2eiRJBTzSYxFJuWptJDGeNiK1kDmR6ozuhpg96Yvlvd46MZUZ3T1QOZHDlvRWkhjzFOpyKT5JMYjSShcZqPVEi/vu2Rom0FM9m4ZXBtntSMQrSEV5kkIEG3pqibwba+onK0GT2rdV5fsqnXIQO/mbG17xbhKHnDd1JowPG4uhKJilkS0Y++WwTfs7S1rz3Nm//IeU8tQJmdF96tO7gVygGVqzZk2XvrczH5NYDZJPG65JnA2id66bu15fbK31bZS7NBZlxMDJcLaFq0kQkBRujDZ+OLM/j0/X3t76Qd6cHaOSEFQJu/ay7rEMEHoS6zsFR8GfrYbvOhkYWXv7AYHFP70+HBirjxXxGDgl/ERM2FtCyRYfx9u/t/2641/ndlv3e5+c/zM29L++ICT+WZThRK8CeuSyEE0wurU/JEY7//JH4/d9eYU6WXj5MsFdffeuGP1H8507s5juYIT3uLnYmTICkK5bEk0hXzW/eayqSOP1Gt4A1ANb9OE1+9ZfUXSFx+tVOyiuXmIUYXAYx1hcmBGsapsydGWbvzp3bNP1utktVpH1PQ06dgY7Zd+3/+LgZI9Md9UIZFYXCq/DIJzlvStgkZD7xRz7tbLf3fsta4GW+6am1+hmJqieoHvu1OZflup2hmNhsjbBATmMAHOIZ9QtNqxds3NjeeWZ+iFxyrXlTI3HQqSGDEDFBEGaYavVIzGgv5rbfvzvjB3//g4C92zl4xxyTEXywfw1FPls0slu6XwbE/LnI2DvCmKNgRRpCnmILSkW/Ok9TxAWpSuLZk9GsHnOfJGkmSQlg0i5E0+TgI7Wy3tuOGG5scrz/ySoCVDq+NsrBO08+/0ly3dErxtDdKPI3ZOpYpTDgu5VDFnYY5ZAN9Hf0NR1dTMUmgsEB36yJv9zQc901T+4vYfdWJVxzNGXPlTnPBtkrDd9+I3T3ZSCfC4KMcD2bl+VhdT8EsGtK102FM92PHJhfWB1roAR+1pEv4S+m2PG25/cJPRXGqNCZKr7iWYHd/LvvKxlLBpcEzD2NjnqQV45BN341lvlSZmB+L5AP1H3fuHLm1N3jYUn/hCK9Tx1KAG8URCTm2MEDYhXF14CbdY4+Q+MXKfGEGdEUOLMRPCSd/+THVC1PXlN+14e18H9i2MgDaxyDMJy6y0hx566OGk8H9kI0wP6crBYgAAAABJRU5ErkJggg==" alt="PVI logo">PVI</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="guide.html">Guide</a></li>
+    <li><a href="cle.html" class="active">Clé</a></li>
+    <li><a href="soutenir.html">Soutenir</a></li>
+    <li><a href="a-propos.html">À propos</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
 
 <!-- Tooltip flottant pour les options -->
 <div id="tooltip">
@@ -190,7 +232,7 @@ body{font-family:'Crimson Pro',Georgia,serif;color:var(--text);min-height:100vh;
 <div class="shell">
   <div class="hdr">
     <h1>Clé de détermination botanique</h1>
-    <p>v0.35</p>
+    <p>v0.37</p>
   </div>
   <div class="bc" id="bc"></div>
   <div class="prog" id="prog"></div>
@@ -467,12 +509,12 @@ document.addEventListener('mousemove',e=>{if(TT.style.display==='block')position
 
 // ══ DONNÉES ══════════════════════════════════════════════════════════════
 const BR=[
-  {ic:"~",bg:"#DCE9F5",co:"#1A4A7A",n:"Phycophytes",s:"Algues — thalle aquatique",a:"≥ 600 Ma",nx:"q_phyco_color"},
+  {ic:"~",bg:"#DCE9F5",co:"#1A4A7A",n:"Phycophytes",s:"Algues thalle aquatique",a:"≥ 600 Ma",nx:"q_phyco_color"},
   {ic:"◦",bg:"#DCF0E2",co:"#2D6A4F",n:"Bryophytes",s:"Mousses, hépatiques, anthocérotes",a:"~470 Ma",nx:"q_bryo1"},
-  {ic:"⌒",bg:"#E8E7FC",co:"#4A42A8",n:"Ptéridophytes",s:"Fougères, prêles, lycopodes",a:"~430 Ma",nx:"q_pt1"},
+  {ic:"⌒",bg:"#E8E7FC",co:"#4A42A8",n:"Ptéridophytes",s:"Fougères, prêles, lycopodes, sélaginelles, isoètes",a:"~430 Ma",nx:"q_pt1"},
   {ic:"▲",bg:"#F5EAD5",co:"#7A4A10",n:"Gymnospermes",s:"Plantes à cônes",a:"~360 Ma",nx:"q_gy0"},
   {ic:"✿",bg:"#F5E2DC",co:"#8B2020",n:"Angiospermes",s:"Plantes à fleurs",a:"~130 Ma",nx:"q_organ"},
-  {ic:"?",bg:"#F0EDE8",co:"#9A9385",n:"Embranchement inconnu",s:"Je ne sais pas — me guider",a:"",nx:"q_uk1"},
+  {ic:"?",bg:"#F0EDE8",co:"#9A9385",n:"Embranchement inconnu",s:"Je ne sais pas me guider",a:"",nx:"q_uk1"},
 ];
 const ORGANS=[
   {ic:"🍃",n:"Feuille",s:"Limbe, pétiole, nervures",nx:"q_an1"},
@@ -488,23 +530,23 @@ q:"Quelle est la couleur dominante de l'algue ?"},
 q_phyco_org_vert:{og:"Thalle — organisation",st:"Chlorophytes",src:"[DV2]",
 q:"Quel est le niveau d'organisation du thalle ?",
 op:[
-  {t:"Archéthalle — unicellulaire ou colonial : toutes les cellules ont le même rôle",s:"Archéthalle → Chlorophytes unicellulaires",nx:"r_chloro_uni"},
-  {t:"Nématothalle — filamenteux : cellules en file, début de spécialisation",s:"Nématothalle → Chlorophytes/Charophytes",nx:"r_nema_vert"},
-  {t:"Cladothalle — ramifié : axe préférentiel de croissance + ramifications",s:"Cladothalle → Chlorophytes",nx:"r_clado_vert"},
+  {t:"Archéthalle unicellulaire ou colonial : toutes les cellules ont le même rôle",s:"Archéthalle → Chlorophytes unicellulaires",nx:"r_chloro_uni"},
+  {t:"Nématothalle filamenteux : cellules en file, début de spécialisation",s:"Nématothalle → Chlorophytes/Charophytes",nx:"r_nema_vert"},
+  {t:"Cladothalle ramifié : axe préférentiel de croissance + ramifications",s:"Cladothalle → Chlorophytes",nx:"r_clado_vert"},
 ]},
 q_phyco_org_brun:{og:"Thalle — organisation",st:"Chromophytes",src:"[DV2]",
 q:"Quel est le niveau d'organisation du thalle ?",
 op:[
-  {t:"Archéthalle — unicellulaire — paroi discontinue formée de deux valves emboîtées (frustules)",s:"Archéthalle → Diatomées",nx:"r_diato"},
-  {t:"Nématothalle — filamenteux : cellules en file, début de spécialisation",s:"Nématothalle → Phéophycées",nx:"r_nema_brun"},
-  {t:"Cladothalle — ramifié : axe préférentiel de croissance + ramifications",s:"Cladothalle → Phéophycées",nx:"r_clado_brun"},
+  {t:"Archéthalle unicellulaire paroi discontinue formée de deux valves emboîtées (frustules)",s:"Archéthalle → Diatomées",nx:"r_diato"},
+  {t:"Nématothalle filamenteux : cellules en file, début de spécialisation",s:"Nématothalle → Phéophycées",nx:"r_nema_brun"},
+  {t:"Cladothalle ramifié : axe préférentiel de croissance + ramifications",s:"Cladothalle → Phéophycées",nx:"r_clado_brun"},
 ]},
 q_phyco_org_rouge:{og:"Thalle — organisation",st:"Rhodophytes",src:"[DV2]",
 q:"Quel est le niveau d'organisation du thalle ?",
 op:[
-  {t:"Archéthalle — unicellulaire ou colonial : toutes les cellules ont le même rôle",s:"Archéthalle → Rhodophytes",nx:"r_arche"},
-  {t:"Nématothalle — filamenteux : cellules en file, début de spécialisation",s:"Nématothalle → Rhodophytes",nx:"r_nema_rouge"},
-  {t:"Cladothalle — ramifié : axe préférentiel de croissance + ramifications",s:"Cladothalle → Rhodophytes",nx:"r_clado_rouge"},
+  {t:"Archéthalle unicellulaire ou colonial : toutes les cellules ont le même rôle",s:"Archéthalle → Rhodophytes",nx:"r_arche"},
+  {t:"Nématothalle filamenteux : cellules en file, début de spécialisation",s:"Nématothalle → Rhodophytes",nx:"r_nema_rouge"},
+  {t:"Cladothalle ramifié : axe préférentiel de croissance + ramifications",s:"Cladothalle → Rhodophytes",nx:"r_clado_rouge"},
 ]},
 
 // ── GYMNOSPERMES — organe macro/micro unifié ─────────────────────────────
@@ -514,26 +556,26 @@ op:[
 q_gy_macro_first:{og:"Macrosporophylle ♀",st:"Gymnospermes",src:"[GY][AQ]",
 q:"Quelle est la forme de la macrosporophylle (structure femelle) ?",
 op:[
-  {t:"Pas de cône ligneux — ovule solitaire entouré d'un arille charnu rouge subglobuleux — critère unique",s:"Arille rouge sans cône → Taxus baccata",nx:"r_taxus"},
-  {t:"Cône femelle ligneux (pomme de pin) — écaille ovulifère — graines ailées à maturité",s:"Cône ligneux → Pinaceae",nx:"r_pinaceae"},
-  {t:"Cône globuleux à écailles peltées (ligneux) — ou galbule charnu (Juniperus)",s:"Cône peltées ou galbule → Cupressaceae",nx:"r_cupressaceae"},
+  {t:"Pas de cône ligneux ovule solitaire entouré d'un arille charnu rouge subglobuleux critère unique",s:"Arille rouge sans cône → Taxus baccata",nx:"r_taxus"},
+  {t:"Cône femelle ligneux (pomme de pin) écaille ovulifère graines ailées à maturité",s:"Cône ligneux → Pinaceae",nx:"r_pinaceae"},
+  {t:"Cône globuleux à écailles peltées (ligneux) ou galbule charnu (Juniperus)",s:"Cône peltées ou galbule → Cupressaceae",nx:"r_cupressaceae"},
   {t:"Ovules par paires à l'extrémité de pédoncules",s:"Ovules paires → Ginkgo biloba",nx:"r_ginkgo"},
   {t:"Structures d'ovules à l'aisselle de feuilles modifiées",s:"Ovules axillaires + port palmier → Cycadidae",nx:"r_cycas"},
   {t:"Cônes femelles en forme de pomme de pin",s:"Cônes femelles sans canaux résinifères → Gnetophyta",nx:"r_gnetophyta"},
-  {t:"Inconnu — je ne sais pas identifier cet organe",s:"Inconnu → autres organes",nx:"q_gy_inconnu"},
+  {t:"Inconnu je ne sais pas identifier cet organe",s:"Inconnu → autres organes",nx:"q_gy_inconnu"},
 ]},
 
 // ── Microsporophylle ♂ (entrée directe) ─────────────────────────────────
 q_gy_micro_first:{og:"Microsporophylle ♂",st:"Gymnospermes",src:"[GY][AQ]",
 q:"Quelle est la forme de la microsporophylle (structure mâle) ?",
 op:[
-  {t:"Cônes très petits (2–3 mm) isolés à l'aisselle des aiguilles — pollinisation anémophile",s:"Cônes 2–3mm axillaires → Taxus baccata",nx:"r_taxus"},
-  {t:"Petits cônes mâles en grappe ou épi — écaille microsporangifère à 2 sacs polliniques",s:"Petits cônes + 2 sacs polliniques → Pinaceae",nx:"r_pinaceae"},
+  {t:"Cônes très petits (2–3 mm) isolés à l'aisselle des aiguilles pollinisation anémophile",s:"Cônes 2–3mm axillaires → Taxus baccata",nx:"r_taxus"},
+  {t:"Petits cônes mâles en grappe ou épi écaille microsporangifère à 2 sacs polliniques",s:"Petits cônes + 2 sacs polliniques → Pinaceae",nx:"r_pinaceae"},
   {t:"Petits cônes mâles écailleux",s:"Cônes écailleux → Cupressaceae",nx:"r_cupressaceae"},
   {t:"Chaton (grappe de microfeuilles) portant les microsporanges",s:"Chaton + éventail bilobé → Ginkgo biloba",nx:"r_ginkgo"},
-  {t:"Grands cônes allongés mâles — étamines superposées",s:"Grands cônes + port palmier → Cycadidae",nx:"r_cycas"},
+  {t:"Grands cônes allongés mâles étamines superposées",s:"Grands cônes + port palmier → Cycadidae",nx:"r_cycas"},
   {t:"Cônes d'étamines en épi",s:"Cônes en épi sans canaux résinifères → Gnetophyta",nx:"r_gnetophyta"},
-  {t:"Inconnu — je ne sais pas identifier cet organe",s:"Inconnu → autres organes",nx:"q_gy_inconnu"},
+  {t:"Inconnu je ne sais pas identifier cet organe",s:"Inconnu → autres organes",nx:"q_gy_inconnu"},
 ]},
 
 // ── Nœud de secours Inconnu ───────────────────────────────────────────────
@@ -547,7 +589,7 @@ q_gy_aig_micro:{og:"Microsporophylle — aiguilles",st:"Gymnospermes",src:"[GY]"
 q:"Quelle est la forme et la taille de la microsporophylle (structure mâle) ?",
 op:[
   {t:"Très petits cônes (2–3 mm) isolés à l'aisselle des aiguilles",s:"Microsporophylle 2–3mm axillaire → Taxus baccata",nx:"r_taxus"},
-  {t:"Petits cônes en grappe ou épi — écaille microsporangifère à 2 sacs polliniques",s:"Petits cônes microsporophylles → Pinaceae",nx:"r_pinaceae"},
+  {t:"Petits cônes en grappe ou épi écaille microsporangifère à 2 sacs polliniques",s:"Petits cônes microsporophylles → Pinaceae",nx:"r_pinaceae"},
   {t:"Petits cônes mâles écailleux",s:"Cônes mâles + aiguilles piquantes → Cupressaceae",nx:"r_cupressaceae"},
 ]},
 
@@ -555,16 +597,16 @@ op:[
 q_gy_aig_macro:{og:"Macrosporophylle — aiguilles",st:"Gymnospermes",src:"[GY]",
 q:"Quelle est la forme de la macrosporophylle (structure femelle) ?",
 op:[
-  {t:"Pas de cône ligneux — ovule solitaire entouré d'un arille charnu rouge subglobuleux — critère unique",s:"Arille rouge sans cône → Taxus baccata",nx:"r_taxus"},
-  {t:"Cône femelle ligneux (pomme de pin) — écaille ovulifère — graines ailées à maturité",s:"Cône ligneux → Pinaceae",nx:"r_pinaceae"},
-  {t:"Cône globuleux à écailles peltées (ligneux) — ou galbule charnu (Juniperus)",s:"Cône peltées ou galbule → Cupressaceae",nx:"r_cupressaceae"},
+  {t:"Pas de cône ligneux ovule solitaire entouré d'un arille charnu rouge subglobuleux critère unique",s:"Arille rouge sans cône → Taxus baccata",nx:"r_taxus"},
+  {t:"Cône femelle ligneux (pomme de pin) écaille ovulifère graines ailées à maturité",s:"Cône ligneux → Pinaceae",nx:"r_pinaceae"},
+  {t:"Cône globuleux à écailles peltées (ligneux) ou galbule charnu (Juniperus)",s:"Cône peltées ou galbule → Cupressaceae",nx:"r_cupressaceae"},
 ]},
 
 // ── Feuilles + Microsporophylle ♂ ───────────────────────────────────────
 q_gy_feu_micro:{og:"Microsporophylle — feuilles",st:"Gymnospermes",src:"[GY]",
 q:"Quelle est la forme de la microsporophylle (structure mâle) ?",
 op:[
-  {t:"Grands cônes allongés mâles — étamines superposées",s:"Grands cônes mâles + tige non ramifiée → Cycadidae",nx:"r_cycas"},
+  {t:"Grands cônes allongés mâles étamines superposées",s:"Grands cônes mâles + tige non ramifiée → Cycadidae",nx:"r_cycas"},
   {t:"Chaton (micro-strobile) : grappe de microfeuilles portant les microsporanges",s:"Chaton + feuilles éventail → Ginkgo biloba",nx:"r_ginkgo"},
   {t:"Cônes mâles couverts d'étamines en épi",s:"Cônes d'étamines en épi, sans canaux résinifères → Gnetophyta",nx:"r_gnetophyta"},
   {t:"Petits cônes mâles écailleux",s:"Petits cônes écailleux + feuilles écailleuses → Cupressaceae",nx:"r_cupressaceae"},
@@ -577,63 +619,333 @@ op:[
   {t:"Structures d'ovules immatures à l'aisselle de feuilles modifiées",s:"Ovules axillaires + tige non ramifiée → Cycadidae",nx:"r_cycas"},
   {t:"Ovules par paires à l'extrémité de pédoncules",s:"Ovules paires sur pédoncules → Ginkgo biloba",nx:"r_ginkgo"},
   {t:"Cônes femelles en forme de pomme de pin",s:"Cônes femelles sans canaux résinifères → Gnetophyta",nx:"r_gnetophyta"},
-  {t:"Cônes ligneux à écailles peltées — ou galbule charnu",s:"Cônes écailles peltées / galbule + feuilles écailleuses → Cupressaceae",nx:"r_cupressaceae"},
+  {t:"Cônes ligneux à écailles peltées ou galbule charnu",s:"Cônes écailles peltées / galbule + feuilles écailleuses → Cupressaceae",nx:"r_cupressaceae"},
 ]},
 
 // ── Tronc seul ───────────────────────────────────────────────────────────
 q_gy_tronc:{og:"Tronc",st:"Gymnospermes",src:"[GY]",
 q:"Quelle est la forme du tronc et son écorce ?",
 op:[
-  {t:"Tige non ramifiée — port de fougère arborescente ou de palmier — frondes en couronne apicale",s:"Tige non ramifiée + port palmier → Cycadidae",nx:"r_cycas"},
-  {t:"Tronc ramifié — feuilles réparties sur toutes les ramifications — feuilles caduques en éventail bilobé",s:"Tronc ramifié + feuilles en éventail → Ginkgo biloba",nx:"r_ginkgo"},
-  {t:"Écorce brun-rouge se desquamant en fines plaques — port cylindro-conique",s:"Écorce brun-rouge desquamante → Taxus baccata",nx:"r_taxus"},
+  {t:"Tige non ramifiée port de fougère arborescente ou de palmier frondes en couronne apicale",s:"Tige non ramifiée + port palmier → Cycadidae",nx:"r_cycas"},
+  {t:"Tronc ramifié feuilles réparties sur toutes les ramifications feuilles caduques en éventail bilobé",s:"Tronc ramifié + feuilles en éventail → Ginkgo biloba",nx:"r_ginkgo"},
+  {t:"Écorce brun-rouge se desquamant en fines plaques port cylindro-conique",s:"Écorce brun-rouge desquamante → Taxus baccata",nx:"r_taxus"},
   {t:"Tronc principal ancré au sol par un système racinaire développé",s:"Tronc à aiguilles + canaux résinifères → Pinaceae / Cupressaceae",nx:"q_gy_aig"},
-  {t:"Inconnu — je ne reconnais pas le type de tronc",s:"Inconnu → microsporophylle",nx:"q_gy_micro_first"},
+  {t:"Inconnu je ne reconnais pas le type de tronc",s:"Inconnu → microsporophylle",nx:"q_gy_micro_first"},
 ]},
 
 // ── INCONNU ───────────────────────────────────────────────────────────────
 q_uk1:{og:"Appareil végétatif",st:"Détermination de l'embranchement",src:"[DV][BRDV]",
 q:"L'organisme possède-t-il un appareil végétatif organisé en organes distincts ?",
 op:[
-  {t:"Non — corps = thalle indifférencié, milieu aquatique obligatoire",s:"Thalle → Phycophytes",nx:"q_phyco_color"},
-  {t:"Pseudo-organes (phyllidies, caulidie, rhizoïdes) — pas de vaisseaux conducteurs — port ≤ 10 cm",s:"Pseudo-organes → Bryophytes",nx:"q_bryo1"},
+  {t:"Non corps = thalle indifférencié, milieu aquatique obligatoire",s:"Thalle → Phycophytes",nx:"q_phyco_color"},
+  {t:"Pseudo-organes (phyllidies, caulidie, rhizoïdes) pas de vaisseaux conducteurs port ≤ 10 cm",s:"Pseudo-organes → Bryophytes",nx:"q_bryo1"},
   {t:"Vrais organes (racines, tige, feuilles) et tissus conducteurs vrais",s:"Vrais organes → suite",nx:"q_uk2"},
 ]},
 q_uk2:{og:"Organe reproducteur",st:"Détermination de l'embranchement",src:"[DV]",
-q:"La plante produit-elle des graines ou libère-t-elle des spores ?",
+q:"La plante produit-elle des graines ?",
 op:[
-  {t:"Spores — sores, strobiles — pas de graine ni de fleur",s:"Spores → Ptéridophytes",nx:"q_pt1"},
-  {t:"Graine nue sur écaille de cône — pas de fruit vrai",s:"Graine nue → Gymnospermes",nx:"q_gy0"},
-  {t:"Graine enfermée dans un fruit — fleurs présentes",s:"Graine dans fruit → Angiospermes",nx:"q_organ"},
+  {t:"Non libère des spores (sores, strobiles) sans produire de graines ni de fleurs",s:"Spores → Ptéridophytes",nx:"q_pt1"},
+  {t:"Oui graines présentes",s:"Graines → suite",nx:"q_uk3"},
+]},
+q_uk3:{og:"Graines — protection",st:"Détermination de l'embranchement",src:"[DV]",
+q:"Les graines sont-elles nues, posées sur une écaille de cône (sans fruit vrai) ?",
+op:[
+  {t:"Oui graine nue sur écaille, sans fruit vrai ni fleurs",s:"Graine nue → Gymnospermes",nx:"q_gy0"},
+  {t:"Non graine enfermée dans un fruit fleurs présentes",s:"Graine dans fruit → Angiospermes",nx:"q_organ"},
 ]},
 
-// ── PTÉRIDOPHYTES ─────────────────────────────────────────────────────────
-q_pt1:{og:"Feuille",st:"Ptéridophytes",src:"[DV]",
-q:"Quelle est la forme des organes foliaires ?",
+
+// ── PTÉRIDOPHYTES — Restructuré v0.37 [PE][PT][DV] ────────────────────────
+
+q_pt1:{og:"Feuilles — nervation",st:"Ptéridophytes",
+q:"Les feuilles ont-elles une nervure médiane unique non ramifiée (microphylles) ?",
 op:[
-  {t:"Grandes frondes pennées à nervures multiples ramifiées — enroulées en crosse à l'état jeune",s:"Frondes → Polypodiidae",nx:"r_fougere"},
-  {t:"Feuilles réduites en gaines verticillées aux nœuds d'une tige articulée creuse — épiderme rugueux au toucher",s:"Gaines verticillées → Equisetidae",nx:"r_prele"},
-  {t:"Petites écailles (microphylles) en spirale sur la tige — une seule nervure médiane",s:"Microphylles → Lycopodiopsida",nx:"r_lyco"},
+  {t:"Oui feuilles petites à nervure médiane unique non ramifiée",s:"Microphylles → Lycophytes",nx:"q_pt_lyco1"},
+  {t:"Non feuilles absentes, en gaines, ou à nervation ramifiée",s:"Autres → Monilophytes",nx:"q_pt_mono1"},
 ]},
+
+// ── LYCOPHYTES ─────────────────────────────────────────────────────────────
+
+q_pt_lyco1:{og:"Tige",st:"Lycophytes",
+q:"La tige est-elle extrêmement courte et renflée en bulbe (corme) ?",
+op:[
+  {t:"Oui tige très courte formant un corme, feuilles longues et étroites à insertions très rapprochées",s:"Corme → Isoétales",nx:"r_isoetales"},
+  {t:"Non tige aérienne ramifiée",s:"Tige aérienne → suite",nx:"q_pt_lyco2"},
+]},
+
+q_pt_lyco2:{og:"Feuilles — languette",st:"Lycophytes à tige aérienne",
+q:"Y a-t-il une petite languette à la base de chaque feuille (côté supérieur) ?",
+op:[
+  {t:"Oui petite languette visible à la base de chaque feuille, côté supérieur",s:"Languette → Sélaginellales",nx:"r_selaginellales"},
+  {t:"Non pas de languette à la base des feuilles",s:"Pas de languette → Lycopodiales",nx:"r_lycopodiales"},
+]},
+
+// ── MONILOPHYTES ──────────────────────────────────────────────────────────
+
+q_pt_mono1:{og:"Tige — articulation",st:"Monilophytes",
+q:"La tige est-elle articulée (nœuds et entre-nœuds nettement distincts) et cannelée en surface ?",
+op:[
+  {t:"Oui tige cannelée avec nœuds et entre-nœuds distincts, gaines foliaires à chaque nœud",s:"Articulée + cannelée → Équisétales",nx:"r_equisetales"},
+  {t:"Non tige non articulée ou absente",s:"Non articulée → suite",nx:"q_pt_mono2"},
+]},
+
+q_pt_mono2:{og:"Feuilles — présence",st:"Monilophytes",
+q:"De vraies feuilles (à nervures et stomates) sont-elles présentes ?",
+op:[
+  {t:"Non seulement des bractées sans nervures ni stomates, sur des axes chlorophylliens dichotomiques, sans racines vraies",s:"Pas de vraies feuilles → Psilotales",nx:"r_psilotales"},
+  {t:"Oui vraies feuilles présentes",s:"Vraies feuilles → suite",nx:"q_pt_mono3"},
+]},
+
+q_pt_mono3:{og:"Feuilles — développement",st:"Fougères",
+q:"Les jeunes feuilles s'enroulent-elles en crosse (circination) pendant leur développement ?",
+op:[
+  {t:"Non pas d'enroulement en crosse, feuille différenciée en une partie végétative et une partie fertile sans limbe",s:"Pas de crosse → Ophioglossales",nx:"r_ophioglossales"},
+  {t:"Oui enroulement en crosse caractéristique pendant la jeunesse",s:"Crosse → suite",nx:"q_pt_mono4"},
+]},
+
+q_pt_mono4:{og:"Sporanges — taille et paroi",st:"Fougères à crosse",
+q:"Les sporanges sont-ils gros, massifs, à paroi épaisse, sans anneau mécanique (eusporanges) ?",
+op:[
+  {t:"Oui eusporanges : gros, massifs, non pédonculés, paroi épaisse, grandes feuilles parfois jusqu'à 5-6 m",s:"Eusporanges → Marattiales",nx:"r_marattiales"},
+  {t:"Non leptosporanges : petits, paroi mince, pédicelle fin, anneau mécanique",s:"Leptosporanges → fougères leptosporangiées",nx:"q_pt_leptospo1"},
+]},
+
+// ── FOUGÈRES LEPTOSPORANGIÉES ─────────────────────────────────────────────
+
+q_pt_leptospo1:{og:"Milieu",st:"Fg. leptosporangiées",
+q:"Le végétal est-il aquatique (rhizome au fond de l'eau ou plante flottante) ?",
+op:[
+  {t:"Oui plante aquatique, sporanges groupés dans des sporocarpes à enveloppe épaisse",s:"Aquatique → Salviniales",nx:"r_salviniales"},
+  {t:"Non plante terrestre",s:"Terrestre → suite",nx:"q_pt_leptospo2"},
+]},
+
+q_pt_leptospo2:{og:"Port — tige aérienne",st:"Fg. leptosporangiées terrestres",
+q:"La tige forme-t-elle un tronc aérien non ramifié pouvant dépasser plusieurs mètres ?",
+op:[
+  {t:"Oui tronc non ramifié, sans bois ni formations secondaires, grandes frondes en couronne au sommet",s:"Tronc arborescent → Cyathéales",nx:"r_cyatheales"},
+  {t:"Non pas de tronc aérien, plante herbacée ou à rhizome",s:"Pas de tronc → suite",nx:"q_pt_leptospo3"},
+]},
+
+q_pt_leptospo3:{og:"Feuilles — épaisseur du limbe",st:"Fg. leptosporangiées",
+q:"Le limbe des feuilles est-il formé d'une seule couche de cellules (translucide, sans épiderme ni stomates) ?",
+op:[
+  {t:"Oui limbe translucide à une seule couche de cellules, sores en bordure entourés d'un involucre",s:"Limbe translucide → Hyménophyllales",nx:"r_hymenophyllales"},
+  {t:"Non limbe normal avec épiderme",s:"Limbe normal → suite",nx:"q_pt_leptospo4"},
+]},
+
+q_pt_leptospo4:{og:"Sporanges — position de l'anneau",st:"Fg. leptosporangiées",
+q:"L'anneau mécanique des sporanges est-il apical, transversal et complet ?",
+op:[
+  {t:"Oui anneau apical transversal et complet, sporanges souvent sur des sporangiophores",s:"Anneau apical complet → Schizéales",nx:"r_schizeales"},
+  {t:"Non anneau différent ou absent",s:"Autre anneau → suite",nx:"q_pt_leptospo5"},
+]},
+
+q_pt_leptospo5:{og:"Rachis — croissance",st:"Fg. leptosporangiées",
+q:"Le rachis présente-t-il une croissance indéfinie avec un bourgeon dormant à son extrémité ?",
+op:[
+  {t:"Oui rachis à croissance indéfinie produisant des étages successifs de pennes appariées pectinées",s:"Rachis indéfini → Gleichéniales",nx:"r_gleicheniales"},
+  {t:"Non rachis à croissance déterminée",s:"Rachis déterminé → suite",nx:"q_pt_leptospo6"},
+]},
+
+q_pt_leptospo6:{og:"Sporanges — taille et anneau",st:"Fg. leptosporangiées",
+q:"Les sporanges sont-ils intermédiaires assez gros, courtement pédonculés, paroi mince, sans anneau mais avec un groupe de cellules épaissies ?",
+op:[
+  {t:"Oui sporanges intermédiaires entre eusporangié et leptosporangié, libèrent plusieurs centaines de spores",s:"Sporanges intermédiaires → Osmondales",nx:"r_osmondales"},
+  {t:"Non leptosporanges typiques : petits, anneau vertical incomplet, spores peu nombreuses sans chlorophylle",s:"Leptosporanges typiques → Polypodiales",nx:"r_polypodiales"},
+]},
+
+// ── GYMNOSPERMES ──────────────────────────────────────────────────────────
+
+r_lycopodiales:{R:true,fl:"Sporophyte",pt:"Lycophytes",f:"Lycopodiales",
+sy:"Lycopodiacées — ~400 espèces",fm:"Sporophyte 2n dominant — isosporé",
+ch:[
+  "Tige aérienne ramifiée, abondamment garnie de petites feuilles coriaces (microphylles) [PE]",
+  "Milieux acides — mycorhizes fréquentes [PE]",
+  "Sporophylles groupées en strobiles à l'extrémité des rameaux [PE]",
+  "Un seul gros sporange à l'aisselle de chaque sporophylle [PE]",
+  "Isosporie : tous les sporanges libèrent des spores microscopiques identiques [PE]",
+  "Genre Huperzia : production de bulbilles (multiplication végétative) [PE]",
+],
+fr:"1 famille : Lycopodiacées — ~400 esp. [PE]"},
+
+r_selaginellales:{R:true,fl:"Sporophyte",pt:"Lycophytes clade sœur des Isoétales",f:"Sélaginellales",
+sy:"Sélaginellacées — genre Selaginella — ~700 espèces",fm:"Sporophyte 2n dominant — hétérosporé",
+ch:[
+  "Tige aérienne ramifiée, feuilles plus fines et délicates que les lycopodes [PE]",
+  "Majorité des espèces : feuilles dimorphes sur 4 rangs à structure dorso-ventrale (2 rangées supérieures plus petites) [PE]",
+  "Languette à la base de chaque feuille (côté supérieur) — caractère diagnostique [PE]",
+  "Hétérosporie : mégasporanges (4 grosses spores >0,5 mm, base du strobile) + microsporanges (haut du strobile) [PE]",
+  "Paroi du mégasporange déformée par les grosses spores — visible à l'œil nu [PE]",
+  "3 espèces en Europe — dont Selaginella selaginoides (montagnes, feuilles toutes semblables) [PE]",
+],
+fr:"1 famille : Sélaginellacées — genre unique Selaginella — ~700 esp. — 3 esp. en Europe [PE]"},
+
+r_isoetales:{R:true,fl:"Sporophyte",pt:"Lycophytes clade sœur des Sélaginellales",f:"Isoétales",
+sy:"Isoétacées — ~250 espèces aquatiques ou terrestres",fm:"Sporophyte 2n dominant — hétérosporé",
+ch:[
+  "Tige très courte = corme (sorte de bulbe) portant racines + feuilles longues et étroites à insertions très rapprochées [PE]",
+  "Presque toutes les feuilles sont à la fois sporophylles et feuilles végétatives [PE]",
+  "Gros sporange dans une excavation à la base de chaque feuille (côté supérieur) [PE]",
+  "Voile : membrane recouvrant le sporange chez la plupart des espèces [PE]",
+  "Ligule triangulaire au-dessus du sporange — comme chez les Sélaginelles [PE]",
+  "Hétérosporées [PE]",
+],
+fr:"1 famille : Isoétacées — ~250 esp. aquatiques ou terrestres [PE]"},
+
+r_equisetales:{R:true,fl:"Sporophyte",pt:"Monilophytes basaux",f:"Équisétales",
+sy:"Équisétacées — 1 genre (Equisetum) — 15 espèces",fm:"Sporophyte 2n dominant — isosporé",
+ch:[
+  "Rhizome articulé vivace + tiges aériennes dressées et cannelées [PE]",
+  "Verticilles de petites feuilles soudées par leur base → gaine entourant la tige à chaque nœud [PE]",
+  "Strobiles au sommet des tiges : boucliers hexagonaux pédonculés portant les sporanges [PE]",
+  "Spores munies de 4 élatères (languettes hygroscopiques favorisant la dispersion) [PE]",
+  "1 seule famille : Équisétacées — 15 espèces [PE]",
+],
+fr:"1 famille : Équisétacées — 1 genre Equisetum — 15 esp. [PE]"},
+
+r_psilotales:{R:true,fl:"Sporophyte",pt:"Monilophytes clade sœur des Ophioglossales",f:"Psilotales",
+sy:"Psilotacées — ~17 espèces épiphytes ou saxicoles",fm:"Sporophyte 2n dominant — isosporé",
+ch:[
+  "Axes chlorophylliens ramifiés dichotomiquement — pas de vraies feuilles [PE]",
+  "Petites bractées sans nervures ni stomates à la place des feuilles [PE]",
+  "Rhizome ramifié sans racines — rhizoïdes (poils sans vascularisation) uniquement [PE]",
+  "Gros sporanges groupés par 3 à l'aisselle de bractées [PE]",
+  "Isospores — genre principal : Psilotum [PE]",
+],
+fr:"1 famille : Psilotacées — ~17 esp. épiphytes ou saxicoles [PE]"},
+
+r_ophioglossales:{R:true,fl:"Sporophyte",pt:"Monilophytes clade sœur des Psilotales",f:"Ophioglossales",
+sy:"Ophioglossacées — ~100 espèces",fm:"Sporophyte 2n dominant — isosporé",
+ch:[
+  "Rhizome + racines épaisses sans poils absorbants, envahies par un champignon symbiote [PE]",
+  "1 feuille aérienne par an (parfois 2-3) — pas d'enroulement en crosse [PE]",
+  "Feuille différenciée en 2 parties : partie végétative + partie fertile sans limbe portant les sporanges [PE]",
+  "Eusporanges : massifs, non pédonculés, paroi épaisse, sans anneau, ouverture par fente transversale [PE]",
+  "Botrychium : sporanges sur grappe composée / Ophioglossum : sporanges en double rangée (épi) [PE]",
+],
+fr:"1 famille : Ophioglossacées — ~100 esp. [PE]"},
+
+r_marattiales:{R:true,fl:"Sporophyte",pt:"Monilophytes clade sœur des Fg. leptosporangiées",f:"Marattiales",
+sy:"Marattiacées — 110 espèces tropicales",fm:"Sporophyte 2n dominant — isosporé",
+ch:[
+  "Fougères tropicales à feuilles diversement découpées, parfois jusqu'à 5-6 m [PE]",
+  "Enroulement en crosse dans la jeunesse [PE]",
+  "Eusporanges : gros, massifs, non pédonculés, paroi épaisse, sans anneau mécanique [PE]",
+  "Selon les genres : sporanges individualisés OU fusionnés en synanges [PE]",
+  "Spores très nombreuses et toutes semblables [PE]",
+],
+fr:"1 famille : Marattiacées — 110 esp. tropicales [PE]"},
+
+r_osmondales:{R:true,fl:"Sporophyte",pt:"Fg. leptosporangiées ordre basal",f:"Osmondales",
+sy:"Osmondacées — ~18 espèces",fm:"Sporophyte 2n dominant",
+ch:[
+  "Sporanges intermédiaires entre eusporangié et leptosporangié [PE]",
+  "Assez gros, courtement pédonculés — paroi mince (une seule assise de cellules) [PE]",
+  "Pas d'anneau mécanique — groupe de cellules à parois épaissies facilitant l'ouverture [PE]",
+  "Chaque sporange libère plusieurs centaines de spores [PE]",
+  "Sur portions de feuilles réduites aux axes ou sur limbe [PE]",
+],
+fr:"1 famille : Osmondacées — ~18 esp. [PE]"},
+
+r_hymenophyllales:{R:true,fl:"Sporophyte",pt:"Fg. leptosporangiées",f:"Hyménophyllales",
+sy:"Hyménophyllacées — ~500 espèces",fm:"Sporophyte 2n dominant",
+ch:[
+  "Feuilles très fines : limbe d'une seule couche de cellules, sans épiderme ni stomates [PE]",
+  "Sores en bordure des segments foliaires, entourés d'un involucre chlorophyllien bivalve ou tubulaire [PE]",
+  "Sporanges courtement pédicellés ou sessiles, anneau mécanique oblique et complet (≠ Polypodiales typiques) [PE]",
+  "Spores chlorophylliennes, à courte durée de vie [PE]",
+],
+fr:"1 famille : Hyménophyllacées — ~500 esp. [PE]"},
+
+r_gleicheniales:{R:true,fl:"Sporophyte",pt:"Fg. leptosporangiées",f:"Gleichéniales",
+sy:"Gleichéniacées (principale) — ~150 espèces",fm:"Sporophyte 2n dominant",
+ch:[
+  "Rachis à croissance indéfinie + bourgeon dormant à l'extrémité produisant des étages successifs de pennes appariées [PE]",
+  "Chaque penne à axe ramifié dichotomiquement, segments foliaires régulièrement pectinés [PE]",
+  "Sores en face inférieure du limbe — sporanges peu nombreux, assez gros, pédicelle épais [PE]",
+  "Spores nombreuses, non chlorophylliennes [PE]",
+],
+fr:"3 familles — Gleichéniacées principale (~150 esp.) [PE]"},
+
+r_schizeales:{R:true,fl:"Sporophyte",pt:"Fg. leptosporangiées",f:"Schizéales",
+sy:"3 familles — ~190 espèces",fm:"Sporophyte 2n dominant",
+ch:[
+  "Anneau transversal, apical et complet — caractère diagnostique absolu [PE]",
+  "Sporanges fréquemment portés par des sporangiophores (portions très modifiées du limbe) [PE]",
+  "Feuilles très diversifiées : Schizea (divisions dichotomiques) / Lygodium (rachis indéterminé, feuilles grimpantes) [PE]",
+],
+fr:"3 familles — ~190 esp. [PE]"},
+
+r_salviniales:{R:true,fl:"Sporophyte",pt:"Fg. leptosporangiées plantes aquatiques",f:"Salviniales",
+sy:"Marsiléacées (~60 sp.) + Salviniacées (~20 sp.)",fm:"Sporophyte 2n dominant — hétérosporé",
+ch:[
+  "Plantes aquatiques — seule caractéristique commune à tout l'ordre [PE]",
+  "Marsiléacées : rhizome rampant au fond de l'eau — Marsilea (limbe développé) ou Pilularia (filiformes) — enroulement en crosse [PE]",
+  "Salviniacées : plante flottante — Azolla (racines + cyanobactérie fixatrice d'azote) / Salvinia (sans racines, 3e feuille immergée simulant des racines) [PE]",
+  "Sporanges dans des sporocarpes — hétérosporées [PE]",
+],
+fr:"2 familles : Marsiléacées (~60 esp.) + Salviniacées (~20 esp.) [PE]"},
+
+r_cyatheales:{R:true,fl:"Sporophyte",pt:"Fg. leptosporangiées clade sœur des Polypodiales",f:"Cyathéales",
+sy:"8 familles — >700 espèces",fm:"Sporophyte 2n dominant",
+ch:[
+  "Fougères arborescentes : tronc non ramifié, sans bois (pas de formations secondaires) — ressemble aux palmiers [PE]",
+  "Tronc peut dépasser 10 m de hauteur [PE]",
+  "Grandes frondes (1-2 m+), très divisées, en couronne au sommet [PE]",
+  "Certaines espèces : tige souterraine, frondes <50 cm, limbe une seule fois divisé [PE]",
+  "Sporanges : anneau pratiquement complet, plan oblique [PE]",
+  "Sores en face inférieure (Cyathéacées) ou en bordure (Dicksoniacées) [PE]",
+],
+fr:"8 familles — >700 esp. [PE]"},
+
+r_polypodiales:{R:true,fl:"Sporophyte",pt:"Fg. leptosporangiées ordre le plus dérivé",f:"Polypodiales",
+sy:"26 familles (PPG I) — ~9000 espèces — groupe dominant des Ptéridophytes",fm:"Sporophyte 2n dominant — isosporé",
+ch:[
+  "Leptosporanges typiques : capsule pédicellée, petite taille, paroi mince (1 couche), anneau mécanique vertical et incomplet [PE]",
+  "Spores peu nombreuses, toutes semblables, généralement sans chlorophylle [PE]",
+  "3 groupes : familles basales (Ptéridacées, Dennstaedtiacées) — Eupolypodes I (Dryoptéridacées, Polypodiacées) — Eupolypodes II (Aspléniacées, Athyriacées, Blechnacées…) [PE]",
+  "Caractères identificatoires : couverture du rhizome (poils ou écailles clathrées), position des sores, indusie présente ou absente, faisceaux vasculaires du pétiole, type de spore (monolète/trilète) [PE]",
+],
+fr:"26 familles (PPG I) — ~9000 esp. — groupe de loin le plus riche des Ptéridophytes [PE]"},
 
 // ── GYMNOSPERMES ──────────────────────────────────────────────────────────
 q_gy0:{og:"",st:"Gymnospermes",src:"[DV][GY][AQ]",isGymnoOrgan:true,
 q:"Quel organe avez-vous à disposition ?"},
-q_gy_aig:{og:"Aiguille — disposition",st:"Gymnospermes",src:"[DV]",
-q:"Quelle est la disposition des aiguilles sur le rameau ?",
+q_gy_aig:{og:"Aiguilles — groupement",st:"Gymnospermes",src:"[DV][GY]",
+q:"Les aiguilles sont-elles groupées en faisceaux entourés d'une gaine à la base (2, 3 ou 5 aiguilles) ?",
 op:[
-  {t:"Aiguilles groupées en faisceau gainé de 2, 3 ou 5 — ou aiguilles solitaires",s:"Aiguilles → Pinaceae",nx:"r_pinaceae"},
-  {t:"Aiguilles piquantes verticillées par 3 sur tout le rameau",s:"Aiguilles piquantes → Cupressaceae",nx:"r_cupressaceae"},
-  {t:"Aiguilles aplaties en peigne des deux côtés du rameau (distiques)",s:"Distiques + arille → Taxaceae",nx:"r_taxus"},
-  {t:"Inconnu — je ne reconnais pas la disposition des aiguilles",s:"Inconnu → macrosporophylle",nx:"q_gy_macro_first"},
+  {t:"Oui aiguilles groupées en faisceaux gainés",s:"Faisceaux gainés → Pinaceae (Pinus)",nx:"r_pinaceae"},
+  {t:"Non aiguilles isolées",s:"Aiguilles isolées → suite",nx:"q_gy_aig2"},
 ]},
-q_gy_feu:{og:"Feuille — forme",st:"Gymnospermes",src:"[DV][GY]",
-q:"Quelle est la forme de la feuille ?",
+q_gy_aig2:{og:"Aiguilles — disposition",st:"Gymnospermes",src:"[DV][GY]",
+q:"Les aiguilles sont-elles verticillées par 3 et piquantes ?",
 op:[
-  {t:"Feuilles en écailles courtes imbriquées entourant le rameau — rameaux en plumes ou en cordes",s:"Écailles → Cupressaceae",nx:"r_cupressaceae"},
-  {t:"Grandes frondes en couronne apicale — tige non ramifiée — port de fougère arborescente ou de palmier",s:"Frondes → Cycadidae",nx:"r_cycas"},
-  {t:"Feuille en éventail bilobée — innervation dichotomique",s:"Éventail bilobé → Ginkgoidae",nx:"r_ginkgo"},
-  {t:"Feuilles très réduites voire absentes sur tiges articulées (Ephedra) — ou 2 feuilles épaisses à nervures parallèles se lacérant (Welwitschia, désert Namibie) — ou feuilles vernissées à cuticule épaisse sur liane (Gnetum)",s:"Feuilles réduites / lacérées / vernissées → Gnetophyta",nx:"r_gnetophyta"},
+  {t:"Oui aiguilles piquantes, verticillées par 3 sur tout le rameau",s:"Verticillées par 3 → Cupressaceae (Juniperus)",nx:"r_cupressaceae"},
+  {t:"Non aiguilles solitaires non verticillées par 3",s:"Solitaires non verticillées → suite",nx:"q_gy_aig3"},
+]},
+q_gy_aig3:{og:"Aiguilles — position sur le rameau",st:"Gymnospermes",src:"[DV][GY]",
+q:"Les aiguilles sont-elles aplaties et disposées en deux rangées de chaque côté du rameau (distiques) ?",
+op:[
+  {t:"Oui aiguilles aplaties distiques, deux rangs de chaque côté du rameau",s:"Distiques → Taxaceae (Taxus)",nx:"r_taxus"},
+  {t:"Non aiguilles solitaires non distiques",s:"Solitaires non distiques → Pinaceae (Picea, Abies)",nx:"r_pinaceae"},
+]},
+q_gy_feu:{og:"Feuilles — forme",st:"Gymnospermes",src:"[DV][GY]",
+q:"Les feuilles sont-elles en écailles courtes imbriquées entourant le rameau ?",
+op:[
+  {t:"Oui feuilles en écailles courtes imbriquées, rameaux en plumes ou en cordes",s:"Écailles imbriquées → Cupressaceae",nx:"r_cupressaceae"},
+  {t:"Non autre type de feuilles",s:"Autre → suite",nx:"q_gy_feu2"},
+]},
+q_gy_feu2:{og:"Feuilles — limbe",st:"Gymnospermes",src:"[DV][GY]",
+q:"La feuille est-elle en éventail bilobée à innervation dichotomique ?",
+op:[
+  {t:"Oui feuille en éventail bilobée, innervation dichotomique (caractère archaïque)",s:"Éventail bilobé → Ginkgo biloba",nx:"r_ginkgo"},
+  {t:"Non autre forme",s:"Autre → suite",nx:"q_gy_feu3"},
+]},
+q_gy_feu3:{og:"Tige — ramification",st:"Gymnospermes",src:"[DV][GY]",
+q:"La tige est-elle non ramifiée avec de grandes frondes en couronne apicale (port palmier ou fougère arborescente) ?",
+op:[
+  {t:"Oui tige non ramifiée, grandes frondes en couronne apicale (port palmier)",s:"Tige non ramifiée + frondes → Cycadidae",nx:"r_cycas"},
+  {t:"Non feuilles très réduites, absentes ou spéciales (lacérées, vernissées)",s:"Feuilles très réduites ou spéciales → Gnetophyta",nx:"r_gnetophyta"},
 ]},
 
 // ── ANGIOSPERMES — ORGANE ─────────────────────────────────────────────────
@@ -644,161 +956,166 @@ q:"Quel(s) organe(s) avez-vous à disposition ?"},
 q_an1:{og:"Feuille",st:"Angiospermes",src:"[BRDV][MOOC]",
 q:"Quel est le type de nervures des feuilles ?",
 op:[
-  {t:"Nervures parallèles — courant de la base au sommet sans se ramifier",s:"Nervures parallèles → Monocotylédone",nx:"q_mo1"},
-  {t:"Nervures réticulées — se ramifiant en réseau sur tout le limbe",s:"Nervures réticulées → Dicotylédone",nx:"q_di0"},
+  {t:"Nervures parallèles courant de la base au sommet sans se ramifier",s:"Nervures parallèles → Monocotylédone",nx:"q_mo1"},
+  {t:"Nervures réticulées se ramifiant en réseau sur tout le limbe",s:"Nervures réticulées → Dicotylédone",nx:"q_di0"},
 ]},
 
 // ── FLEUR ─────────────────────────────────────────────────────────────────
-q_fl_inflo:{og:"Inflorescence",st:"Angiospermes — Fleur",src:"[BRDV][MOOC]",
+q_fl_inflo:{og:"Inflorescence",st:"Angiospermes Fleur",src:"[BRDV][MOOC]",
 q:"Quel est le type d'inflorescence ?",
 op:[
-  {t:"Capitule — nombreuses fleurs sur réceptacle commun, entouré d'un involucre de bractées",s:"Capitule → Asteraceae",nx:"r_asteraceae"},
-  {t:"Ombelle composée d'ombellules — pétiole souvent en gaine",s:"Ombelle → Apiaceae",nx:"r_apiaceae"},
-  {t:"Cyme scorpioïde — en crosse se déroulant progressivement",s:"Cyme scorpioïde → Boraginaceae",nx:"q_bora1"},
-  {t:"Glomérule — anneau de fleurs à l'aisselle des feuilles — tige carrée",s:"Glomérule + tige carrée → Lamiaceae",nx:"r_lamiaceae"},
+  {t:"Capitule nombreuses fleurs sur réceptacle commun, entouré d'un involucre de bractées",s:"Capitule → Asteraceae",nx:"r_asteraceae"},
+  {t:"Ombelle composée d'ombellules pétiole souvent en gaine",s:"Ombelle → Apiaceae",nx:"r_apiaceae"},
+  {t:"Cyme scorpioïde en crosse se déroulant progressivement",s:"Cyme scorpioïde → Boraginaceae",nx:"q_bora1"},
+  {t:"Glomérule anneau de fleurs à l'aisselle des feuilles tige carrée",s:"Glomérule + tige carrée → Lamiaceae",nx:"r_lamiaceae"},
   {t:"Inflorescence autre ou fleur solitaire",s:"Autre → symétrie",nx:"q_fl_sym"},
 ]},
-q_fl_sym:{og:"Fleur — symétrie",st:"Angiospermes — Fleur",src:"[BRDV][TP]",
+q_fl_sym:{og:"Fleur — symétrie",st:"Angiospermes Fleur",src:"[BRDV][TP]",
 q:"Quelle est la symétrie de la fleur ?",
 op:[
-  {t:"✶ Actinomorphe — symétrie radiale",s:"Actinomorphe",nx:"q_fl_peri"},
-  {t:"↓ Zygomorphe — un seul plan de symétrie",s:"Zygomorphe",nx:"q_fl_zygo"},
+  {t:"✶ Actinomorphe symétrie radiale",s:"Actinomorphe",nx:"q_fl_peri"},
+  {t:"↓ Zygomorphe un seul plan de symétrie",s:"Zygomorphe",nx:"q_fl_zygo"},
 ]},
-q_fl_zygo:{og:"Fleur — corolle",st:"Angiospermes — Fleur",src:"[MOOC][TP]",
+q_fl_zygo:{og:"Fleur — corolle",st:"Angiospermes Fleur",src:"[MOOC][TP]",
 q:"Quelle est la forme de la corolle zygomorphe ?",
 op:[
   {t:"Corolle papilionacée : étendard + 2 ailes + carène",s:"Papilionacée → Fabaceae",nx:"q_fab1"},
   {t:"Corolle bilabiée : lèvre supérieure (casque, 2 pétales) + lèvre inférieure (1 pétale bilobé)",s:"Bilabiée → Lamiaceae",nx:"r_lamiaceae"},
-  {t:"Corolle tubulaire en doigt de gant — 5 lobes inégaux — gorge maculée",s:"Doigt de gant → Digitalis",nx:"r_digitalis"},
+  {t:"Corolle tubulaire en doigt de gant 5 lobes inégaux gorge maculée",s:"Doigt de gant → Digitalis",nx:"r_digitalis"},
   {t:"Labelle (tépale ventral différencié) + gynostème + pollinies",s:"Labelle → Orchidaceae",nx:"r_orchi"},
 ]},
-q_fl_peri:{og:"Fleur — périanthe",st:"Angiospermes — Fleur",src:"[MOOC][TP]",
+q_fl_peri:{og:"Fleur — périanthe",st:"Angiospermes Fleur",src:"[MOOC][TP]",
 q:"Combien de sépales et de pétales ?",
 op:[
   {t:"4 sépales + 4 pétales libres disposés en croix",s:"4+4 → Brassicaceae",nx:"r_brassicaceae"},
   {t:"5 sépales + 5 pétales ou pièces nombreuses",s:"5+5 → androcée",nx:"q_fl_andro"},
 ]},
-q_fl_andro:{og:"Fleur — androcée",st:"Angiospermes — Fleur",src:"[TP][MOOC]",
+q_fl_andro:{og:"Fleur — androcée",st:"Angiospermes Fleur",src:"[TP][MOOC]",
 q:"Comment les étamines sont-elles soudées ?",
 op:[
-  {t:"Synanthérie — 5 étamines soudées par leurs anthères en manchon autour du style",s:"Synanthérie → Asteraceae",nx:"r_asteraceae"},
-  {t:"Corolliflore — étamines soudées à la corolle",s:"Corolliflore → Lamiaceae",nx:"r_lamiaceae"},
-  {t:"Étamines libres, nombreuses — toutes les pièces florales libres entre elles",s:"Pièces libres → suite",nx:"q_fl_ovar"},
+  {t:"Synanthérie 5 étamines soudées par leurs anthères en manchon autour du style",s:"Synanthérie → Asteraceae",nx:"r_asteraceae"},
+  {t:"Corolliflore étamines soudées à la corolle",s:"Corolliflore → Lamiaceae",nx:"r_lamiaceae"},
+  {t:"Étamines libres, nombreuses toutes les pièces florales libres entre elles",s:"Pièces libres → suite",nx:"q_fl_ovar"},
 ]},
-q_fl_ovar:{og:"Fleur — gynécée",st:"Angiospermes — Fleur",src:"[BRDV][TP]",
+q_fl_ovar:{og:"Fleur — gynécée",st:"Angiospermes Fleur",src:"[BRDV][TP]",
 q:"L'ovaire est-il supère ou infère ?",
 op:[
-  {t:"Supère — pièces florales insérées sous l'ovaire (hypogynes) sur le réceptacle",s:"Ovaire supère",nx:"q_fl_ovar_sup"},
-  {t:"Infère — pièces florales insérées au-dessus de l'ovaire (épigynes) — ovaire soudé au conceptacle",s:"Ovaire infère",nx:"q_fl_ovar_inf"},
+  {t:"Supère pièces florales insérées sous l'ovaire (hypogynes) sur le réceptacle",s:"Ovaire supère",nx:"q_fl_ovar_sup"},
+  {t:"Infère pièces florales insérées au-dessus de l'ovaire (épigynes) ovaire soudé au conceptacle",s:"Ovaire infère",nx:"q_fl_ovar_inf"},
 ]},
 
-q_fl_ovar_sup:{og:"Fleur — ovaire supère",st:"Angiospermes — Fleur",src:"[BRDV][TP]",
-q:"Les étamines et carpelles sont-ils libres et nombreux, ou les étamines sont-elles insérées sur un hypanthium, ou la corolle est-elle gamopétale ?",
+q_fl_ovar_sup:{og:"Corolle — soudure",st:"Angiospermes Fleur",src:"[BRDV][TP]",
+q:"Les pétales sont-ils soudés entre eux (corolle gamopétale, en tube ou en étoile) ?",
 op:[
-  {t:"Étamines et carpelles nombreux libres en spirale — sépales souvent colorés",s:"Pièces libres → Ranunculaceae",nx:"q_ranun1"},
-  {t:"Étamines insérées sur un hypanthium — feuilles stipulées",s:"Hypanthium → Rosaceae",nx:"q_ros1"},
-  {t:"Corolle gamopétale en étoile ou en trompette — 5 étamines libres",s:"Gamopétale → Solanaceae",nx:"q_sola1"},
+  {t:"Oui pétales soudés en tube ou en étoile (corolle gamopétale)",s:"Gamopétale → Solanaceae",nx:"q_sola1"},
+  {t:"Non pétales libres (corolle dialypétale)",s:"Dialypétale → suite",nx:"q_fl_ovar_sup2"},
+]},
+q_fl_ovar_sup2:{og:"Étamines — insertion",st:"Angiospermes Fleur",src:"[BRDV][TP]",
+q:"Les étamines sont-elles insérées sur un hypanthium (tube floral) ?",
+op:[
+  {t:"Oui étamines insérées sur un hypanthium, feuilles généralement stipulées",s:"Hypanthium → Rosaceae",nx:"q_ros1"},
+  {t:"Non étamines et carpelles libres et nombreux en spirale",s:"Pièces libres → Ranunculaceae",nx:"q_ranun1"},
 ]},
 
-q_fl_ovar_inf:{og:"Fleur — ovaire infère",st:"Angiospermes — Fleur",src:"[BRDV][TP]",
+q_fl_ovar_inf:{og:"Fleur — ovaire infère",st:"Angiospermes Fleur",src:"[BRDV][TP]",
 q:"Quelle est l'inflorescence associée à cet ovaire infère ?",
 op:[
-  {t:"Ombelle composée d'ombellules — pétiole souvent en gaine",s:"Infère + ombelle → Apiaceae",nx:"r_apiaceae"},
+  {t:"Ombelle composée d'ombellules pétiole souvent en gaine",s:"Infère + ombelle → Apiaceae",nx:"r_apiaceae"},
   {t:"Capitule entouré d'un involucre de bractées",s:"Infère + capitule → Asteraceae",nx:"r_asteraceae"},
 ]},
 
 // ── FRUIT ─────────────────────────────────────────────────────────────────
 // ── FRUIT → TAXON (questions uniquement sur le fruit) ─────────────────────
-q_fruit1:{og:"Fruit",st:"Angiospermes — Fruit",src:"[TP]",
+q_fruit1:{og:"Fruit",st:"Angiospermes Fruit",src:"[TP]",
 q:"Le fruit est-il charnu ou sec ?",
 op:[
-  {t:"Charnu — péricarpe gorgé de matières de réserves",s:"Charnu",nx:"q_fruit_ch1"},
-  {t:"Sec — péricarpe desséché et fibreux",s:"Sec",nx:"q_fruit_sec1"},
+  {t:"Charnu péricarpe gorgé de matières de réserves",s:"Charnu",nx:"q_fruit_ch1"},
+  {t:"Sec péricarpe desséché et fibreux",s:"Sec",nx:"q_fruit_sec1"},
 ]},
-q_fruit_ch1:{og:"Fruit charnu — endocarpe",st:"Angiospermes — Fruit",src:"[TP]",
+q_fruit_ch1:{og:"Fruit charnu — endocarpe",st:"Angiospermes Fruit",src:"[TP]",
 q:"L'endocarpe (couche interne du péricarpe) est-il lignifié en noyau dur ?",
 op:[
-  {t:"Oui — endocarpe lignifié = noyau dur — 1 seule graine (amande) — fruit monospermé : drupe",s:"Drupe → suite",nx:"q_fruit_drupe"},
-  {t:"Non — 3 tissus du péricarpe charnus — graines = pépins libres — polyspermé : baie",s:"Baie → suite",nx:"q_fruit_baie"},
-  {t:"Enveloppe charnue rouge entourant une graine noire solitaire — structure subglobuleuse",s:"Arille rouge → Taxus baccata",nx:"r_taxus"},
+  {t:"Oui endocarpe lignifié = noyau dur 1 seule graine (amande) fruit monospermé : drupe",s:"Drupe → suite",nx:"q_fruit_drupe"},
+  {t:"Non 3 tissus du péricarpe charnus graines = pépins libres polyspermé : baie",s:"Baie → suite",nx:"q_fruit_baie"},
+  {t:"Enveloppe charnue rouge entourant une graine noire solitaire structure subglobuleuse",s:"Arille rouge → Taxus baccata",nx:"r_taxus"},
 ]},
-q_fruit_drupe:{og:"Drupe — couleur et taille",st:"Angiospermes — Fruit",src:"[TP][PS]",
+q_fruit_drupe:{og:"Drupe — couleur et taille",st:"Angiospermes Fruit",src:"[TP][PS]",
 q:"Quelle est la couleur de la drupe à maturité complète ?",
 op:[
-  {t:"Verte puis noire à maturité — petite (1–1,5 cm)",s:"Drupe verte→noire → Laurus nobilis probable",nx:"r_laurus"},
-  {t:"Rouge puis noire — ressemble à une mini-cerise",s:"Drupe rouge→noire → Rosaceae (Prunus)",nx:"r_rosaceae"},
+  {t:"Verte puis noire à maturité petite (1–1,5 cm)",s:"Drupe verte→noire → Laurus nobilis probable",nx:"r_laurus"},
+  {t:"Rouge puis noire ressemble à une mini-cerise",s:"Drupe rouge→noire → Rosaceae (Prunus)",nx:"r_rosaceae"},
   {t:"Autre couleur ou taille",s:"Drupe autre → Rosaceae",nx:"r_rosaceae"},
 ]},
-q_fruit_baie:{og:"Baie — couleur",st:"Angiospermes — Fruit",src:"[TP][PS]",
+q_fruit_baie:{og:"Baie — couleur",st:"Angiospermes Fruit",src:"[TP][PS]",
 q:"Quelle est la couleur des baies ?",
 op:[
   {t:"Baies rouges globuleuses brillantes",s:"Baies rouges → Convallaria majalis probable",nx:"r_conval"},
   {t:"Baies noires brillantes avec calice étoilé persistant à la base",s:"Baies noires + calice étoilé → Solanaceae",nx:"r_solanaceae"},
   {t:"Autre couleur",s:"Baie → Solanaceae famille",nx:"r_solanaceae"},
 ]},
-q_fruit_sec1:{og:"Fruit sec",st:"Angiospermes — Fruit",src:"[TP]",
+q_fruit_sec1:{og:"Fruit sec",st:"Angiospermes Fruit",src:"[TP]",
 q:"Le fruit s'ouvre-t-il spontanément à maturité ?",
 op:[
-  {t:"Oui — fentes de déhiscence spontanée",s:"Déhiscent",nx:"q_fruit_deh"},
-  {t:"Non — ne s'ouvre pas spontanément",s:"Indéhiscent",nx:"q_fruit_indeh"},
+  {t:"Oui fentes de déhiscence spontanée",s:"Déhiscent",nx:"q_fruit_deh"},
+  {t:"Non ne s'ouvre pas spontanément",s:"Indéhiscent",nx:"q_fruit_indeh"},
 ]},
-q_fruit_deh:{og:"Fruit sec déhiscent — carpelles et fentes",st:"Angiospermes — Fruit",src:"[TP]",
+q_fruit_deh:{og:"Fruit sec déhiscent — carpelles et fentes",st:"Angiospermes Fruit",src:"[TP]",
 q:"Combien de carpelles ? Combien de fentes de déhiscence ? Forme du fruit ?",
 op:[
-  {t:"1 carpelle — 2 fentes — 2 valves (½ carpelles) : gousse allongée à graines alignées",s:"Gousse → Fabaceae",nx:"r_fabaceae"},
-  {t:"2 carpelles — 4 fentes + fausse cloison (septum) persistante : silique linéaire",s:"Silique → Brassicaceae",nx:"r_brassicaceae"},
-  {t:"Capsule ovoïde épineuse dressée — déhiscence par 4 valves — graines noires réniformes visibles",s:"Capsule épineuse 4 valves → Datura stramonium",nx:"r_datura"},
-  {t:"Capsule trilobée hérissée d'aiguillons mous — 3 graines marbrées dans les loges",s:"Capsule trilobée → Ricinus communis",nx:"r_ricin"},
-  {t:"Follicules allongés (≥ 2 par fleur, cylindriques, 6–10 cm) — ensemble déhiscent sur une fente",s:"Follicules allongés → Nerium oleander",nx:"r_nerium"},
-  {t:"Polyfollicule — plusieurs follicules par fleur — chacun s'ouvre par 1 fente",s:"Polyfollicule → Ranunculaceae",nx:"r_ranuncu"},
+  {t:"1 carpelle 2 fentes 2 valves (½ carpelles) : gousse allongée à graines alignées",s:"Gousse → Fabaceae",nx:"r_fabaceae"},
+  {t:"2 carpelles 4 fentes + fausse cloison (septum) persistante : silique linéaire",s:"Silique → Brassicaceae",nx:"r_brassicaceae"},
+  {t:"Capsule ovoïde épineuse dressée déhiscence par 4 valves graines noires réniformes visibles",s:"Capsule épineuse 4 valves → Datura stramonium",nx:"r_datura"},
+  {t:"Capsule trilobée hérissée d'aiguillons mous 3 graines marbrées dans les loges",s:"Capsule trilobée → Ricinus communis",nx:"r_ricin"},
+  {t:"Follicules allongés (≥ 2 par fleur, cylindriques, 6–10 cm) ensemble déhiscent sur une fente",s:"Follicules allongés → Nerium oleander",nx:"r_nerium"},
+  {t:"Polyfollicule plusieurs follicules par fleur chacun s'ouvre par 1 fente",s:"Polyfollicule → Ranunculaceae",nx:"r_ranuncu"},
 ]},
-q_fruit_indeh:{og:"Fruit sec indéhiscent",st:"Angiospermes — Fruit",src:"[TP][ADV]",
+q_fruit_indeh:{og:"Fruit sec indéhiscent",st:"Angiospermes Fruit",src:"[TP][ADV]",
 q:"Le péricarpe adhère-t-il à la graine de façon indissociable ?",
 op:[
-  {t:"Oui — péricarpe et graine inséparables : caryopse — fruit très allongé ou ovoïde",s:"Caryopse → Poaceae",nx:"r_poaceae"},
-  {t:"Non — graine libre dans le péricarpe : akène",s:"Akène → suite",nx:"q_fruit_akene"},
+  {t:"Oui péricarpe et graine inséparables : caryopse fruit très allongé ou ovoïde",s:"Caryopse → Poaceae",nx:"r_poaceae"},
+  {t:"Non graine libre dans le péricarpe : akène",s:"Akène → suite",nx:"q_fruit_akene"},
 ]},
-q_fruit_akene:{og:"Akène — caractères du péricarpe",st:"Angiospermes — Fruit",src:"[TP][ADV]",
+q_fruit_akene:{og:"Akène — caractères du péricarpe",st:"Angiospermes Fruit",src:"[TP][ADV]",
 q:"L'akène porte-t-il un pappus, une aile ou est-il dans un involucre particulier ?",
 op:[
-  {t:"Akène surmonté d'un pappus plumeux bien développé — capitule visible",s:"Akène + pappus → Asteraceae",nx:"r_asteraceae"},
+  {t:"Akène surmonté d'un pappus plumeux bien développé capitule visible",s:"Akène + pappus → Asteraceae",nx:"r_asteraceae"},
   {t:"Akène enfermé dans un involucre épineux (boule hérissée)",s:"Akène + involucre épineux → Ambrosia artemisiifolia",nx:"r_ambrosia"},
-  {t:"Akène trigone (3 angles nets visibles) — petit, vert puis brun",s:"Akène trigone → Polygonaceae (Reynoutria probable)",nx:"r_reynoutria"},
+  {t:"Akène trigone (3 angles nets visibles) petit, vert puis brun",s:"Akène trigone → Polygonaceae (Reynoutria probable)",nx:"r_reynoutria"},
   {t:"Akène muni d'une aile membraneuse : samare",s:"Samare → famille à préciser par autre organe",nx:"r_asteraceae"},
 ]},
 
 // ── GRAINE → TAXON (questions uniquement sur la graine) ───────────────────
-q_graine1:{og:"Graine — péricarpe",st:"Angiospermes — Graine",src:"[TP]",
+q_graine1:{og:"Graine — péricarpe",st:"Angiospermes Graine",src:"[TP]",
 q:"Le péricarpe adhère-t-il à la graine de façon indissociable ?",
 op:[
-  {t:"Oui — péricarpe et tégument de la graine soudés et inséparables : caryopse",s:"Caryopse → Poaceae",nx:"r_poaceae"},
-  {t:"Non — graine séparable de son péricarpe",s:"Graine séparable",nx:"q_graine2"},
+  {t:"Oui péricarpe et tégument de la graine soudés et inséparables : caryopse",s:"Caryopse → Poaceae",nx:"r_poaceae"},
+  {t:"Non graine séparable de son péricarpe",s:"Graine séparable",nx:"q_graine2"},
 ]},
-q_graine2:{og:"Graine — cotylédons",st:"Angiospermes — Graine",src:"[TP][BRDV]",
+q_graine2:{og:"Graine — cotylédons",st:"Angiospermes Graine",src:"[TP][BRDV]",
 q:"Combien de cotylédons l'embryon possède-t-il ?",
 op:[
-  {t:"1 cotylédon — présence d'un coléoptile (gaine de la gemmule) et d'une coléorhize (gaine de la radicule)",s:"1 cotylédon → Monocotylédone",nx:"r_graine_mono"},
+  {t:"1 cotylédon présence d'un coléoptile (gaine de la gemmule) et d'une coléorhize (gaine de la radicule)",s:"1 cotylédon → Monocotylédone",nx:"r_graine_mono"},
   {t:"2 cotylédons",s:"2 cotylédons → Dicotylédone",nx:"q_graine3"},
 ]},
-q_graine3:{og:"Graine — albumen",st:"Angiospermes — Graine",src:"[TP]",
+q_graine3:{og:"Graine — albumen",st:"Angiospermes Graine",src:"[TP]",
 q:"L'albumen (tissu nourricier 3n) est-il présent dans la graine mature ?",
 op:[
-  {t:"Oui — graine albuminée — embryon petit noyé dans la masse de l'albumen",s:"Albuminée",nx:"q_graine4a"},
-  {t:"Non — graine exalbuminée — cotylédons volumineux, plus trace d'albumen",s:"Exalbuminée",nx:"q_graine4b"},
+  {t:"Oui graine albuminée embryon petit noyé dans la masse de l'albumen",s:"Albuminée",nx:"q_graine4a"},
+  {t:"Non graine exalbuminée cotylédons volumineux, plus trace d'albumen",s:"Exalbuminée",nx:"q_graine4b"},
 ]},
-q_graine4a:{og:"Graine albuminée — réserves",st:"Angiospermes — Graine",src:"[TP]",
+q_graine4a:{og:"Graine albuminée — réserves",st:"Angiospermes Graine",src:"[TP]",
 q:"Quel est le type de réserves dans l'albumen ?",
 op:[
-  {t:"Graine amylacée — albumen farineux",s:"Amylacée → Poaceae probable",nx:"r_poaceae"},
-  {t:"Graine oléagineuse — albumen huileux",s:"Oléagineuse → Brassicaceae probable",nx:"r_brassicaceae"},
+  {t:"Graine amylacée albumen farineux",s:"Amylacée → Poaceae probable",nx:"r_poaceae"},
+  {t:"Graine oléagineuse albumen huileux",s:"Oléagineuse → Brassicaceae probable",nx:"r_brassicaceae"},
   {t:"Graine protéagineuse",s:"Protéagineuse → Fabaceae probable",nx:"r_fabaceae"},
 ]},
-q_graine4b:{og:"Graine exalbuminée — réserves",st:"Angiospermes — Graine",src:"[TP]",
+q_graine4b:{og:"Graine exalbuminée — réserves",st:"Angiospermes Graine",src:"[TP]",
 q:"Quel est le type de réserves dans les cotylédons volumineux ?",
 op:[
-  {t:"Cotylédons charnus riches en protéines — graine protéagineuse",s:"Protéagineuse → Fabaceae",nx:"r_fabaceae"},
-  {t:"Cotylédons huileux — graine oléagineuse",s:"Oléagineuse → Brassicaceae",nx:"r_brassicaceae"},
-  {t:"Cotylédons farineux — graine amylacée",s:"Amylacée → Poaceae probable",nx:"r_poaceae"},
+  {t:"Cotylédons charnus riches en protéines graine protéagineuse",s:"Protéagineuse → Fabaceae",nx:"r_fabaceae"},
+  {t:"Cotylédons huileux graine oléagineuse",s:"Oléagineuse → Brassicaceae",nx:"r_brassicaceae"},
+  {t:"Cotylédons farineux graine amylacée",s:"Amylacée → Poaceae probable",nx:"r_poaceae"},
 ]},
 // Résultat graine monocot (sans question sur organe souterrain)
 r_graine_mono:{R:true,pt:"Monocotylédones (Sous-embranchement)",f:"Monocotylédones",src:"[TP][BRDV]",sy:"1 cotylédon — famille à préciser par la plante entière",fm:"",
@@ -809,53 +1126,63 @@ fr:"Variable selon famille"},
 q_mo1:{og:"Tige",st:"Monocotylédones",src:"[MOOC][ADV]",
 q:"La tige est-elle un chaume (creuse entre les nœuds, pleine et cloisonnée aux nœuds) ?",
 op:[
-  {t:"Oui — chaume creux entre les nœuds, plein aux nœuds",s:"Chaume",nx:"q_mo2"},
+  {t:"Oui chaume creux entre les nœuds, plein aux nœuds",s:"Chaume",nx:"q_mo2"},
   {t:"Non",s:"Non-chaume",nx:"q_mo3"},
 ]},
 q_mo2:{og:"Feuille — jonction gaine/limbe",st:"Monocotylédones",src:"[MOOC]",
 q:"Y a-t-il une ligule à la jonction entre la gaine foliaire et le limbe ?",
 op:[
-  {t:"Ligule présente — membrane ou frange de poils",s:"Ligule → Poaceae",nx:"r_poaceae"},
+  {t:"Ligule présente membrane ou frange de poils",s:"Ligule → Poaceae",nx:"r_poaceae"},
   {t:"Pas de ligule visible",s:"Pas de ligule",nx:"q_mo3"},
 ]},
 q_mo3:{og:"Fleur",st:"Monocotylédones",src:"[MOOC]",
 q:"La fleur est-elle zygomorphe avec un labelle (tépale ventral profondément différencié) ?",
 op:[
-  {t:"Oui — labelle nettement différencié + gynostème + pollinies",s:"Labelle → Orchidaceae",nx:"r_orchi"},
+  {t:"Oui labelle nettement différencié + gynostème + pollinies",s:"Labelle → Orchidaceae",nx:"r_orchi"},
   {t:"Non",s:"Pas de labelle",nx:"q_mo4"},
 ]},
-q_mo4:{og:"Organe souterrain",st:"Monocotylédones",src:"[PS]",
-q:"Quel est l'organe souterrain ? Quelle est l'odeur au froissement des feuilles ?",
+q_mo4:{og:"Feuilles — odeur",st:"Monocotylédones",src:"[PS]",
+q:"Y a-t-il une odeur alliacée (ail) nette au froissement des feuilles ?",
 op:[
-  {t:"Bulbe fin allongé — odeur alliacée nette au froissement",s:"Bulbe + alliacée → Allium ursinum",nx:"r_allium"},
-  {t:"Corme volumineux — aucune odeur au froissement",s:"Corme + automne → Colchicum",nx:"r_colchi"},
-  {t:"Rhizome traçant — aucune odeur au froissement",s:"Rhizome + campanulées → Convallaria",nx:"r_conval"},
+  {t:"Oui odeur alliacée nette et caractéristique au froissement",s:"Odeur alliacée → Allium ursinum",nx:"r_allium"},
+  {t:"Non pas d'odeur alliacée au froissement",s:"Pas d'odeur alliacée → suite",nx:"q_mo4b"},
+]},
+q_mo4b:{og:"Organe souterrain — type",st:"Monocotylédones",src:"[PS]",
+q:"L'organe souterrain est-il un rhizome traçant (tige souterraine horizontale longue) ?",
+op:[
+  {t:"Oui rhizome traçant souterrain horizontal",s:"Rhizome traçant → Convallaria majalis",nx:"r_conval"},
+  {t:"Non organe souterrain court et volumineux (corme)",s:"Corme → Colchicum autumnale",nx:"r_colchi"},
 ]},
 
 // ── DICOTYLÉDONES ─────────────────────────────────────────────────────────
-q_di0:{og:"Tige",st:"Dicotylédones",src:"[MOOC][PS]",
-q:"Quelle est la section de la tige ? Y a-t-il du latex à la cassure ?",
+q_di0:{og:"Tige — section",st:"Dicotylédones",src:"[MOOC][PS]",
+q:"La tige est-elle franchement quadrangulaire (section carrée nette) ?",
 op:[
-  {t:"Tige franchement quadrangulaire — section carrée nette",s:"Tige carrée → Lamiaceae",nx:"r_lamiaceae"},
-  {t:"Latex blanc visible à la cassure de la tige ou du pétiole",s:"Latex blanc",nx:"q_di_latex"},
-  {t:"Tige ronde — pas de latex",s:"Ronde",nx:"q_di1"},
+  {t:"Oui section carrée nette",s:"Section carrée → Lamiaceae",nx:"r_lamiaceae"},
+  {t:"Non section ronde ou non carrée",s:"Non carrée → suite",nx:"q_di0b"},
 ]},
-q_di_latex:{og:"Feuille — disposition",st:"Dicotylédones — latex",src:"[PS]",
+q_di0b:{og:"Tige — latex",st:"Dicotylédones",src:"[MOOC][PS]",
+q:"Y a-t-il du latex blanc visible à la cassure de la tige ou du pétiole ?",
+op:[
+  {t:"Oui latex blanc s'écoulant à la cassure",s:"Latex blanc → suite",nx:"q_di_latex"},
+  {t:"Non pas de latex",s:"Pas de latex → suite",nx:"q_di1"},
+]},
+q_di_latex:{og:"Feuille — disposition",st:"Dicotylédones latex",src:"[PS]",
 q:"Quelle est la disposition des feuilles sur la tige ?",
 op:[
   {t:"Feuilles verticillées par 3",s:"Verticillées 3 → Nerium",nx:"r_nerium"},
   {t:"Autre disposition",s:"Autre + latex → Euphorbiaceae",nx:"q_di_euphorb"},
 ]},
-q_di_euphorb:{og:"Inflorescence / feuille",st:"Euphorbiaceae",src:"[PS]",
-q:"Observez l'inflorescence et la feuille : cyathium ou feuilles peltées palmatilobées ?",
+q_di_euphorb:{og:"Feuilles — forme",st:"Euphorbiaceae",src:"[PS]",
+q:"Les feuilles sont-elles peltées palmatilobées (7 à 9 lobes dentés, pétiole inséré au centre du limbe) ?",
 op:[
-  {t:"Feuilles peltées palmatilobées à 7–9 lobes dentés — capsules trilobées hérissées — graines marbrées",s:"Peltées → Ricinus communis",nx:"r_ricin"},
-  {t:"Cyathium (pseudanthe : involucre à glandes nectarifères + fleurs réduites)",s:"Cyathium → Euphorbia spp.",nx:"r_euphorb"},
+  {t:"Oui feuilles peltées palmatilobées à 7-9 lobes dentés",s:"Peltées palmatilobées → Ricinus communis",nx:"r_ricin"},
+  {t:"Non autre type de feuilles",s:"Autre → Euphorbia",nx:"r_euphorb"},
 ]},
 q_di1:{og:"Inflorescence",st:"Dicotylédones",src:"[MOOC][PS][ADV]",
 q:"Quel est le type d'inflorescence ?",
 op:[
-  {t:"Capitule — réceptacle commun entouré d'un involucre de bractées",s:"Capitule → Asteraceae",nx:"q_ast1"},
+  {t:"Capitule réceptacle commun entouré d'un involucre de bractées",s:"Capitule → Asteraceae",nx:"q_ast1"},
   {t:"Ombelle composée d'ombellules",s:"Ombelle → Apiaceae",nx:"r_apiaceae"},
   {t:"Cyme scorpioïde",s:"Cyme scorpioïde → Boraginaceae",nx:"q_bora1"},
   {t:"Grappe unilatérale de fleurs pendantes",s:"Doigt de gant → Digitalis",nx:"r_digitalis"},
@@ -866,34 +1193,34 @@ op:[
 q_bora1:{og:"Tige",st:"Boraginaceae",src:"[PS][V]",
 q:"La tige est-elle ailée par des feuilles décurrentes ?",
 op:[
-  {t:"Oui — tige ailée par des feuilles décurrentes",s:"Tige ailée → Symphytum",nx:"r_symphytum"},
-  {t:"Non — pas de tige ailée",s:"Poils blancs + bleues → Borago",nx:"r_borago"},
+  {t:"Oui tige ailée par des feuilles décurrentes",s:"Tige ailée → Symphytum",nx:"r_symphytum"},
+  {t:"Non pas de tige ailée",s:"Poils blancs + bleues → Borago",nx:"r_borago"},
 ]},
 q_ast1:{og:"Feuille",st:"Asteraceae",src:"[ADV][PS]",
 q:"Quel est l'aspect des feuilles ?",
 op:[
   {t:"Feuilles lancéolées épineuses décurrentes sur la tige (ailes épineuses)",s:"Épineuses décurrentes → Cirsium",nx:"r_cirsium"},
-  {t:"Feuilles bipennatiséquées de couleur verte sur les DEUX faces — inodores",s:"Bipennatiséquées → Ambrosia",nx:"r_ambrosia"},
+  {t:"Feuilles bipennatiséquées de couleur verte sur les DEUX faces inodores",s:"Bipennatiséquées → Ambrosia",nx:"r_ambrosia"},
   {t:"Autre morphologie foliaire",s:"Autre → Asteraceae",nx:"r_asteraceae"},
 ]},
 q_di2:{og:"Fleur — symétrie",st:"Dicotylédones",src:"[BRDV][TP]",
 q:"Quelle est la symétrie de la fleur ?",
 op:[
-  {t:"↓ Zygomorphe — un seul plan",s:"Zygomorphe",nx:"q_di3"},
-  {t:"✶ Actinomorphe — symétrie radiale",s:"Actinomorphe",nx:"q_di4"},
+  {t:"↓ Zygomorphe un seul plan",s:"Zygomorphe",nx:"q_di3"},
+  {t:"✶ Actinomorphe symétrie radiale",s:"Actinomorphe",nx:"q_di4"},
 ]},
-q_di3:{og:"Fleur — corolle",st:"Dicotylédones",src:"[MOOC]",
-q:"La corolle est-elle papilionacée (étendard + 2 ailes + carène) avec des feuilles composées stipulées ?",
+q_di3:{og:"Corolle — forme",st:"Dicotylédones",src:"[MOOC]",
+q:"La corolle est-elle papilionacée (étendard + 2 ailes + carène) ?",
 op:[
-  {t:"Oui — corolle papilionacée + feuilles composées stipulées",s:"Papilionacée → Fabaceae",nx:"q_fab1"},
-  {t:"Non",s:"Autre",nx:"r_fabaceae"},
+  {t:"Oui corolle papilionacée avec étendard, 2 ailes et carène",s:"Papilionacée → Fabaceae",nx:"q_fab1"},
+  {t:"Non autre forme de corolle",s:"Autre → Fabaceae (autre type)",nx:"r_fabaceae"},
 ]},
 q_fab1:{og:"Tige",st:"Fabaceae",src:"[PS]",
 q:"La tige porte-t-elle des épines stipulaires rigides par paires à la base des feuilles ?",
 op:[
-  {t:"Oui — épines stipulaires par paires — feuilles imparipennées",s:"Épines → Robinia",nx:"r_robinia"},
-  {t:"Non — feuilles trifoliolées",s:"3 folioles + jaunes → Laburnum",nx:"r_laburnum"},
-  {t:"Non — autre structure foliaire",s:"Autre → Fabaceae",nx:"r_fabaceae"},
+  {t:"Oui épines stipulaires par paires feuilles imparipennées",s:"Épines → Robinia",nx:"r_robinia"},
+  {t:"Non feuilles trifoliolées",s:"3 folioles + jaunes → Laburnum",nx:"r_laburnum"},
+  {t:"Non autre structure foliaire",s:"Autre → Fabaceae",nx:"r_fabaceae"},
 ]},
 q_di4:{og:"Fleur — périanthe",st:"Dicotylédones",src:"[MOOC]",
 q:"Combien de sépales et de pétales ?",
@@ -902,33 +1229,39 @@ op:[
   {t:"5 sépales + 5 pétales, ou pièces nombreuses",s:"5+5",nx:"q_di5"},
 ]},
 q_di5:{og:"Tige — nœuds",st:"Dicotylédones",src:"[MOOC]",
-q:"Les nœuds de la tige sont-ils renflés ? Les feuilles sont-elles opposées et entières ?",
+q:"Les nœuds de la tige sont-ils nettement renflés et enflés ?",
 op:[
-  {t:"Oui — nœuds renflés + feuilles opposées entières",s:"Nœuds renflés → Caryophyllaceae",nx:"r_caryophyl"},
-  {t:"Non",s:"Nœuds normaux",nx:"q_di6"},
+  {t:"Oui nœuds nettement renflés et enflés",s:"Nœuds renflés → Caryophyllaceae",nx:"r_caryophyl"},
+  {t:"Non nœuds normaux",s:"Nœuds normaux → suite",nx:"q_di6"},
 ]},
 q_di6:{og:"Fleur — pétales",st:"Dicotylédones",src:"[BRDV]",
 q:"Les pétales sont-ils soudés en tube (gamopétale) ou libres (dialypétale) ?",
 op:[
-  {t:"Soudés — corolle gamopétale en étoile ou en trompette",s:"Gamopétale → Solanaceae",nx:"q_sola1"},
-  {t:"Libres — corolle dialypétale",s:"Dialypétale",nx:"q_di7"},
+  {t:"Soudés corolle gamopétale en étoile ou en trompette",s:"Gamopétale → Solanaceae",nx:"q_sola1"},
+  {t:"Libres corolle dialypétale",s:"Dialypétale",nx:"q_di7"},
 ]},
-q_sola1:{og:"Feuille",st:"Solanaceae",src:"[PS][ADV]",
-q:"Les feuilles sont-elles alternes ovales sinuées-dentées à dents acuminées, la plante est-elle robuste et fétide ?",
+q_sola1:{og:"Feuilles — bord",st:"Solanaceae",src:"[PS][ADV]",
+q:"Les feuilles sont-elles ovales sinuées-dentées à grandes dents acuminées ?",
 op:[
-  {t:"Oui",s:"Sinuées + fétide → Datura",nx:"r_datura"},
-  {t:"Non",s:"Autre → Solanaceae",nx:"r_solanaceae"},
+  {t:"Oui feuilles ovales sinuées-dentées à grandes dents acuminées",s:"Sinuées-dentées → suite",nx:"q_sola1b"},
+  {t:"Non autre morphologie foliaire",s:"Autre → Solanaceae",nx:"r_solanaceae"},
 ]},
-q_di7:{og:"Fleur — androcée",st:"Dicotylédones",src:"[MOOC][TP]",
-q:"Les étamines sont-elles toutes libres entre elles et libres de toutes les autres pièces florales ?",
+q_sola1b:{og:"Plante — odeur",st:"Solanaceae",src:"[PS]",
+q:"La plante a-t-elle une odeur forte et désagréable (fétide) ?",
 op:[
-  {t:"Oui — toutes les pièces florales libres — étamines et carpelles nombreux libres — sépales souvent colorés",s:"Pièces libres → Ranunculaceae",nx:"q_ranun1"},
-  {t:"Étamines insérées sur un hypanthium — stipules souvent présentes",s:"Hypanthium → Rosaceae",nx:"q_ros1"},
+  {t:"Oui odeur forte et désagréable caractéristique",s:"Fétide → Datura stramonium",nx:"r_datura"},
+  {t:"Non pas d'odeur particulière",s:"Pas d'odeur → Solanaceae",nx:"r_solanaceae"},
+]},
+q_di7:{og:"Étamines — insertion",st:"Dicotylédones",src:"[MOOC][TP]",
+q:"Les étamines sont-elles insérées sur un hypanthium (tube floral) ?",
+op:[
+  {t:"Oui étamines insérées sur un hypanthium, stipules généralement présentes",s:"Hypanthium → Rosaceae",nx:"q_ros1"},
+  {t:"Non étamines et carpelles tous libres, nombreux, en spirale",s:"Pièces libres → Ranunculaceae",nx:"q_ranun1"},
 ]},
 q_ranun1:{og:"Fleur",st:"Ranunculaceae",src:"[PS]",
 q:"Le sépale supérieur est-il transformé en casque (galère) en forme de capuchon ?",
 op:[
-  {t:"Oui — sépale supérieur transformé en casque bleu-violacé",s:"Casque → Aconitum",nx:"r_aconit"},
+  {t:"Oui sépale supérieur transformé en casque bleu-violacé",s:"Casque → Aconitum",nx:"r_aconit"},
   {t:"Non",s:"Autre → Ranunculaceae",nx:"r_ranuncu"},
 ]},
 q_ros1:{og:"Feuille",st:"Rosaceae",src:"[PS]",
@@ -985,27 +1318,27 @@ fr:"Gamétocystes — cycle trigénétique : gamétophyte (n) → carposporophyt
 q_bryo1:{og:"Milieu de vie",st:"Bryophytes (au sens large)",src:"[BR]",
 q:"Sur quel milieu pousse le végétal ?",
 op:[
-  {t:"Sol humide et ombragé — sous-bois, murs, rochers",s:"Sol humide ombragé",nx:"q_bryo2"},
-  {t:"Tourbière ou marais — milieu acide et gorgé d'eau",s:"Tourbière / marais",nx:"q_bryo2"},
+  {t:"Sol humide et ombragé sous-bois, murs, rochers",s:"Sol humide ombragé",nx:"q_bryo2"},
+  {t:"Tourbière ou marais milieu acide et gorgé d'eau",s:"Tourbière / marais",nx:"q_bryo2"},
   {t:"Rochers siliceux en altitude (montagne)",s:"Rochers siliceux en montagne",nx:"q_bryo2"},
-  {t:"Milieu aquatique — flottant à la surface des mares ou étangs",s:"Aquatique",nx:"q_bryo2"},
-  {t:"Inconnu — milieu non identifiable sur le terrain",s:"Milieu inconnu",nx:"q_bryo2"},
+  {t:"Milieu aquatique flottant à la surface des mares ou étangs",s:"Aquatique",nx:"q_bryo2"},
+  {t:"Inconnu milieu non identifiable sur le terrain",s:"Milieu inconnu",nx:"q_bryo2"},
 ]},
 
 q_bryo2:{og:"Aspect général",st:"Bryophytes (au sens large)",src:"[BR]",
 q:"Quel est l'aspect du végétal ?",
 op:[
-  {t:"Surface plane épaisse aplatie — pseudothalle chlorophyllien — plusieurs couches de cellules empilées",s:"Pseudothalle aplati → Anthocérophytes",nx:"r_anthecerophytes"},
-  {t:"Corps plurilobé rappelant le foie — port thalloïde",s:"Corps plurilobé → Hépatophytes",nx:"r_hepatophytes"},
-  {t:"Coussinets spongieux décolorés ou blanchâtres — aspect hygrophile",s:"Coussinets blanchâtres → Sphagnales",nx:"r_sphagnales"},
-  {t:"Touffe sombre et dense — substrat rocheux",s:"Touffe sombre → Andreales",nx:"r_andreales"},
-  {t:"Mousse verte — axe (caulidie) portant des ramifications — symétrie radiale",s:"Mousse verte → Bryales",nx:"r_bryales"},
+  {t:"Surface plane épaisse aplatie pseudothalle chlorophyllien plusieurs couches de cellules empilées",s:"Pseudothalle aplati → Anthocérophytes",nx:"r_anthecerophytes"},
+  {t:"Corps plurilobé rappelant le foie port thalloïde",s:"Corps plurilobé → Hépatophytes",nx:"r_hepatophytes"},
+  {t:"Coussinets spongieux décolorés ou blanchâtres aspect hygrophile",s:"Coussinets blanchâtres → Sphagnales",nx:"r_sphagnales"},
+  {t:"Touffe sombre et dense substrat rocheux",s:"Touffe sombre → Andreales",nx:"r_andreales"},
+  {t:"Mousse verte axe (caulidie) portant des ramifications symétrie radiale",s:"Mousse verte → Bryales",nx:"r_bryales"},
 ]},
 
-r_anthecerophytes:{R:true,fl:"Gamétophyte / Sporophyte",pt:"Bryophytes — au sens large (Embranchement)",f:"Anthocérophytes",src:"[BR]",sy:"~350 espèces — groupe en perdition [BR]",fm:"Embryophytes non vasculaires",
+r_anthecerophytes:{R:true,fl:"Gamétophyte / Sporophyte",pt:"Bryophytes au sens large (Embranchement)",f:"Anthocérophytes",src:"[BR]",sy:"~350 espèces — groupe en perdition [BR]",fm:"Embryophytes non vasculaires",
 ch:["Pseudothalle chlorophyllien aplati — surfaces planes épaisses empilées (plusieurs couches de cellules) [BR]","Cormophytes malgré l'aspect thalloïde : présence d'épiderme, parenchyme chlorophyllien et tissus conducteurs [BR]","Milieux humides et ombragés obligatoires [BR]","Gamétophyte (n) dominant [BR]","Port ≤ 10 cm — pas de vaisseaux conducteurs vrais [BR]"],
 fr:"Gamétophyte (n) dominant — Sporophyte (sporogone 2n) parasite du gamétophyte, développe une capsule libérant des spores méiotiques [BR]"},
-r_hepatophytes:{R:true,fl:"Gamétophyte / Sporophyte",pt:"Bryophytes — au sens large (Embranchement)",f:"Hépatophytes",src:"[BR]",sy:"6 500 à 9 000 espèces [BR]",fm:"Embryophytes non vasculaires",
+r_hepatophytes:{R:true,fl:"Gamétophyte / Sporophyte",pt:"Bryophytes au sens large (Embranchement)",f:"Hépatophytes",src:"[BR]",sy:"6 500 à 9 000 espèces [BR]",fm:"Embryophytes non vasculaires",
 ch:["Corps plurilobé rappelant la morphologie du foie humain [BR]","Zones les plus humides — certaines espèces aquatiques (flottent à la surface des mares et des étangs) [BR]","Pseudo-organes : phyllidies, caulidie, rhizoïdes [DV]","Gamétophyte (n) dominant [BR]","Corbeilles à propagules présentes chez les hépatiques [BR]","Archégones en corbeilles inversées — fécondation nécessite inondation [BR]"],
 fr:"Gamétophyte (n) dominant — Sporophyte (sporogone) se développe dans l'archégone, capsule massive libérant de nombreuses spores [BR]"},
 r_bryales:{R:true,fl:"Gamétophyte / Sporophyte",pt:"Bryophytes s.s. (Sous-embranchement)",f:"Bryales",src:"[BR]",sy:"Mousses au sens populaire — ordre le plus représenté [BR]",fm:"Embryophytes non vasculaires",
@@ -1053,7 +1386,7 @@ r_allium:{R:true,pt:"Amaryllidaceae (Famille)",f:"Allium ursinum L.",src:"[PS]",
 ch:["Odeur alliacée nette au froissement des feuilles [PS]","Feuilles par deux, longuement pétiolées, vert clair [PS]","Comestible — confusion possible avec Colchicum autumnale ⚫ et Convallaria majalis ⚫ [PS]"],fr:"Petites capsules trigones"},
 r_colchi:{R:true,pt:"Colchicaceae (Famille)",f:"Colchicum autumnale L.",src:"[PS]",sy:"Colchique d'automne ⚫",fm:"⚫ Mortel",
 ch:["Feuilles longues lancéolées engainantes sans pétiole — apparition printanière [PS]","Floraison automnale (sept.–nov.) nue : 6 tépales rose-mauve, 6 étamines, style trifide [PS]","Plante entière toxique — toxine thermostable (résiste à la cuisson et à la congélation) [PS]"],fr:"Grosse capsule trivalve apparaissant entre les feuilles au printemps suivant"},
-r_conval:{R:true,pt:"Asparagaceae — Nolinoideae (Famille)",f:"Convallaria majalis L.",src:"[PS]",sy:"Muguet ⚫",fm:"⚫ Très toxique",
+r_conval:{R:true,pt:"Asparagaceae Nolinoideae (Famille)",f:"Convallaria majalis L.",src:"[PS]",sy:"Muguet ⚫",fm:"⚫ Très toxique",
 ch:["Feuilles engainantes toujours par deux — aucune odeur [PS]","Rhizome traçant","Fleurs campanulées blanches (printemps) — plante entière très toxique [PS]"],fr:"Baies rouges ⚫"},
 r_lamiaceae:{R:true,pt:"Dicotyledones (Sous-embranchement)",f:"Lamiaceae",src:"[MOOC][AG]",sy:"Labiatae — Herbacee — Famille tres conservee [MOOC]",fm:"down K(5) [C(5) A4] G(2)",
 ch:["Tige carree — critere diagnostique immediat [MOOC]","5 sepales soudes [AG]","Corolle bilabige zygomorphe : levre superieure = casque (2 petales) + style fourchu / levre inferieure = 1 petale biloble [MOOC][V]","4 etamines didynames (2 grandes + 2 petites) corolliflores [MOOC]","Ovaire tetraloculaire (septum) [MOOC]","Inflorescence en glomerdules ou epi de cymes [BRDV][AG]","Especes : sauge, thym, basilic, menthe, lavande, origan, romarin, lamier [AG]"],
@@ -1358,5 +1691,9 @@ function prevOptPage(key){optPage[key]=Math.max(0,(optPage[key]||0)-1);render();
 function restart(){hist=[];nodeHist=[];cur='br';render();window.scrollTo({top:0,behavior:'smooth'})}
 render();
 </script>
+<footer class="pvi-footer">
+  <span class="footer-l">© 2026 Jézabel Perez · PVI</span>
+  <span class="footer-r"><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a></span>
+</footer>
 </body>
 </html>
