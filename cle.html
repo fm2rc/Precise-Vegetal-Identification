@@ -17,18 +17,13 @@
 }
 html{background:var(--bg)}
 body{font-family:'Crimson Pro',Georgia,serif;color:var(--text);min-height:100vh;background:var(--bg)}
-.shell{max-width:680px;margin:0 auto;padding:0 20px 60px;margin-top:52px;overflow:hidden}
+.shell{max-width:680px;margin:0 auto;padding:32px 20px 60px}
 .hdr{
   background:#1A1A18;
   text-align:center;
   padding:80px 32px 72px;
-  margin-bottom:36px;
-  position:relative;
-  left:50%;
-  right:50%;
-  margin-left:-50vw;
-  margin-right:-50vw;
-  width:100vw;
+  width:100%;
+  margin-bottom:0;
 }
 .hdr h1{
   font-family:'Cormorant Garamond',Georgia,serif;
@@ -38,7 +33,6 @@ body{font-family:'Crimson Pro',Georgia,serif;color:var(--text);min-height:100vh;
   line-height:1;
   color:#fff;
   margin-bottom:18px;
-  white-space:nowrap;
   text-shadow:
     0 2px 16px rgba(0,0,0,.75),
     0 1px  6px rgba(0,0,0,.55);
@@ -241,6 +235,12 @@ footer{background:#fff;border-top:1px solid var(--border);padding:22px 56px;disp
   </div>
 </div>
 
+<div class="hdr">
+    <h1>Clé de détermination botanique</h1>
+    <p>v0.37</p>
+  </div>
+  <div class="bc" id="bc"></div>
+  <div class="prog" id="prog"></div>
 <div class="shell">
   <div class="hdr">
     <h1>Clé de détermination botanique</h1>
